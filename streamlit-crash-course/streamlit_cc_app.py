@@ -145,5 +145,7 @@ for r in rows:
         if fig_index < len(figs):
             with col:
                 st.subheader(f"Chart {fig_index+1}")  # optional title
+                figs[fig_index].update_layout(height=300)
+
                 st.plotly_chart(figs[fig_index], use_container_width=True, key=f"chart{fig_index}")
             fig_index += 1
