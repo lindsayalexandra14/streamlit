@@ -18,9 +18,6 @@ st.pyplot(fig)
 
 import plotly.express as px
 
-# Example data
-df = px.data.df()
-
 # Create figure with specific size
 fig = px.scatter(df, x="income_man", y="income_woman", color="num_kids")
 fig.update_layout(width=800, height=500)  # width & height in pixels
