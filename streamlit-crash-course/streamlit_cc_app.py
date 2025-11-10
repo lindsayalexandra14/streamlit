@@ -117,8 +117,9 @@ with st.container():
     # # # Create figure with specific size
     # fig3 = px.scatter(df, x="income_man", y="income_woman", color="num_kids")
     # fig3.update_layout(width=800, height=500)  # width & height in pixels
-
+    fig3=plot_bars(df,"education_man", custom_palette)
     # # Show in Streamlit
     st.plotly_chart(fig1)
+    st.plotly_chart(fig3)
 
 st.write("This is outside the container")
