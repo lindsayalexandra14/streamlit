@@ -15,3 +15,15 @@ fig, ax = plt.subplots()
 ax.hist(arr, bins=20)
 
 st.pyplot(fig)
+
+import plotly.express as px
+
+# Example data
+df = px.data.iris()
+
+# Create figure with specific size
+fig = px.scatter(df, x="sepal_width", y="sepal_length", color="species")
+fig.update_layout(width=800, height=500)  # width & height in pixels
+
+# Show in Streamlit
+st.plotly_chart(fig)
