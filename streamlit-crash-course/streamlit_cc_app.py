@@ -113,12 +113,12 @@ import plotly.express as px
 
 with st.container():
     st.write("This is inside the container")
-    plot_bars(df,"num_kids", custom_palette)
+    fig1=plot_bars(df,"num_kids", custom_palette)
     # # # Create figure with specific size
     # fig3 = px.scatter(df, x="income_man", y="income_woman", color="num_kids")
     # fig3.update_layout(width=800, height=500)  # width & height in pixels
 
     # # Show in Streamlit
-    # st.plotly_chart(fig3)
+    st.plotly_chart(fig1)
 
 st.write("This is outside the container")
