@@ -10,7 +10,7 @@ df = pd.read_csv("divorce.csv")
 import matplotlib.pyplot as plt
 from numpy.random import default_rng as rng
 
-arr = rng(0).normal(1, 1, size=100)
+arr = rng(0).normal(1, 1, size=20)
 fig, ax = plt.subplots()
 ax.hist(arr, bins=20)
 
