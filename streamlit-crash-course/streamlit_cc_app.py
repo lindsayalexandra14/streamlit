@@ -24,3 +24,11 @@ fig.update_layout(width=800, height=500)  # width & height in pixels
 
 # Show in Streamlit
 st.plotly_chart(fig)
+
+with st.container():
+    st.write("This is inside the container")
+
+    # You can call any Streamlit command, including custom components:
+    st.pyplot(fig)
+    
+st.write("This is outside the container")
