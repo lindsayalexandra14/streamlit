@@ -117,9 +117,33 @@ with st.container():
     # # # Create figure with specific size
     # fig3 = px.scatter(df, x="income_man", y="income_woman", color="num_kids")
     # fig3.update_layout(width=800, height=500)  # width & height in pixels
-    fig3=plot_bars(df,"education_man", custom_palette)
+    fig2=plot_bars(df,"education_man", custom_palette)
     # # Show in Streamlit
+    fig3=plot_bars(df,"education_woman", custom_palette)
+    fig4=plot_bars(df,"marriage_decade", custom_palette)
+    fig5=plot_bars(df,"marriage_year", custom_palette)
+    fig6=plot_bars(df,"divorce_year", custom_palette)
+      
     st.plotly_chart(fig1)
+    st.plotly_chart(fig2)
     st.plotly_chart(fig3)
+    st.plotly_chart(fig4)
+    st.plotly_chart(fig5)
+    st.plotly_chart(fig6)
 
 st.write("This is outside the container")
+
+row1 = st.columns(3)
+row2 = st.columns(3)
+
+figs = [fig1, fig2, fig3, fig4, fig5, fig6]  # Your charts
+rows = [row1, row2]
+
+fig_index = 0
+for r in rows:
+    for col in r:
+        if fig_index < len(figs):
+            with col:
+                st.subheader(f"Chart {fig_index+1}")  # optional title
+                st.plotly_chart(figs[fig_index], use_container_width=True, key=f"chart{fig_index}")
+            fig_index += 1
