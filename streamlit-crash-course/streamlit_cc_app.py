@@ -18,12 +18,12 @@ st.pyplot(fig)
 
 import plotly.express as px
 
-# Create figure with specific size
-fig2 = px.scatter(df, x="income_man", y="income_woman", color="num_kids")
-fig2.update_layout(width=800, height=500)  # width & height in pixels
+# # Create figure with specific size
+# fig2 = px.scatter(df, x="income_man", y="income_woman", color="num_kids")
+# fig2.update_layout(width=800, height=500)  # width & height in pixels
 
-# Show in Streamlit
-st.plotly_chart(fig2)
+# # Show in Streamlit
+# st.plotly_chart(fig2)
 
 with st.container():
     st.write("This is inside the container")
