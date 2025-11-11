@@ -73,47 +73,10 @@ def plot_bars(df, col, custom_palette, sort_by='percentage', title="Title TBD"):
     return fig
 
 # ---------------------------
-# Create all figures + captions
+# Create figures + captions
 # ---------------------------
 charts = [
     {"fig": plot_bars(df, "num_kids", custom_palette, title="Number of Kids"),
      "caption": "Most of the (divorced) couples had 0 kids (39%) followed by 1 or 2 kids."},
     {"fig": plot_bars(df,"education_man", custom_palette, title='Education (Man)'),
-     "caption": "Most of the men had a Professional-level education (higher education, post-college) at 57%."},
-    {"fig": plot_bars(df,"education_woman", custom_palette, title='Education (Woman)'),
-     "caption": "The women had an even higher makeup of Professional-level education (higher education, post-college) at 62%."},
-    {"fig": plot_bars(df,"marriage_decade", custom_palette, title='Marriage Decade'),
-     "caption": "Over 75% of the couples were married in the '90s or '00s."},
-    {"fig": plot_bars(df,"marriage_year", custom_palette, sort_by="category", title='Marriage Year'),
-     "caption": "The highest percentage of couples were married in 1998 (5.5%)."},
-    {"fig": plot_bars(df,"divorce_year", custom_palette, sort_by="category", title='Divorce Year'),
-     "caption": "The highest number of divorces among the couples occurred in 2011 (9.8%), with an overall peak between 2008-2011."}
-]
-
-# ---------------------------
-# Dash App
-# ---------------------------
-app = dash.Dash(__name__)
-
-grid_children = []
-for idx, c in enumerate(charts):
-    grid_children.append(
-        dgl.DraggableWrapper(
-            children=[
-                dcc.Graph(figure=c["fig"], style={"width":"100%", "height":"100%"}),
-                html.Div(c["caption"], style={"font-size":"12px", "margin-top":"5px"})
-            ],
-            key=f"chart{idx+1}",
-            minW=3, minH=3
-        )
-    )
-
-app.layout = dgl.DashGridLayout(
-    children=grid_children,
-    rowHeight=150,
-    cols={'lg':12, 'md':10, 'sm':6, 'xs':4, 'xxs':2},
-    style={'height':'900px'}
-)
-
-if __name__ == "__main__":
-    app.run_server(debug=True)
+     "caption": "Most of the men had a Professional-level edu
