@@ -1,10 +1,12 @@
 import streamlit as st
 from streamlit_elements import elements, dashboard, mui
-
-st.title('Python EDA: Divorce Data')
-
+from streamlit_elements import plotly
+import matplotlib.pyplot as plt
+import plotly.express as px
 import pandas as pd
 import numpy as np
+
+st.title('Python EDA: Divorce Data')
 
 df = pd.read_csv("divorce.csv")
 
@@ -117,28 +119,7 @@ def plot_bars(df, col, custom_palette, sort_by='percentage', title="Title TBD", 
 
     return fig;
 
-
-import matplotlib.pyplot as plt
-# from numpy.random import default_rng as rng
-
-# arr = rng(0).normal(1, 1, size=20)
-# fig, ax = plt.subplots()
-# ax.hist(arr, bins=20)
-
-# st.pyplot(fig)
-
-import plotly.express as px
-
-# # Create figure with specific size
-# fig2 = px.scatter(df, x="income_man", y="income_woman", color="num_kids")
-# fig2.update_layout(width=800, height=500)  # width & height in pixels
-
-# # Show in Streamlit
-# st.plotly_chart(fig2)
-
-with st.container():
-    st.write("This is inside the container")
-    fig1 = plot_bars(df, "num_kids", custom_palette, title="Number of Kids", caption="Most of the (divorced) couples had 0 kids (39%) followed by<br>having 1 or 2 kids.")
+fig1 = plot_bars(df, "num_kids", custom_palette, title="Number of Kids", caption="Most of the (divorced) couples had 0 kids (39%) followed by<br>having 1 or 2 kids.")
     # # # Create figure with specific size
     # fig3 = px.scatter(df, x="income_man", y="income_woman", color="num_kids")
     # fig3.update_layout(width=800, height=500)  # width & height in pixels
@@ -149,60 +130,92 @@ with st.container():
     fig4 = plot_bars(df,"marriage_decade", custom_palette, title='Marriage Decade', caption="Over 75% of the couples were married in the '90s or '00s.")
     fig5 = plot_bars(df,"marriage_year", custom_palette, title='Marriage Year', sort_by="category", caption="The highest percentage of couples were married in 1998 (5.5%).")
     fig6 = plot_bars(df,"divorce_year", custom_palette, sort_by="category", title='Divorce Year', caption='The highest number of divorces among the couples occurred in <br>2011 (9.8%), with an overall peak between 2008-2011.')
+
+# from numpy.random import default_rng as rng
+
+# arr = rng(0).normal(1, 1, size=20)
+# fig, ax = plt.subplots()
+# ax.hist(arr, bins=20)
+
+# st.pyplot(fig)
+
+
+
+# # Create figure with specific size
+# fig2 = px.scatter(df, x="income_man", y="income_woman", color="num_kids")
+# fig2.update_layout(width=800, height=500)  # width & height in pixels
+
+# # Show in Streamlit
+# st.plotly_chart(fig2)
+
+# with st.container():
+#     st.write("This is inside the container")
+#     fig1 = plot_bars(df, "num_kids", custom_palette, title="Number of Kids", caption="Most of the (divorced) couples had 0 kids (39%) followed by<br>having 1 or 2 kids.")
+#     # # # Create figure with specific size
+#     # fig3 = px.scatter(df, x="income_man", y="income_woman", color="num_kids")
+#     # fig3.update_layout(width=800, height=500)  # width & height in pixels
+#     fig2 = plot_bars(df,"education_man", custom_palette, title='Education (Man)', caption="Most of the men had a Professional-level education (higher <br>education, post-college) at 57%.")
+
+#     # # Show in Streamlit
+#     fig3 = plot_bars(df,"education_woman", custom_palette, title='Education (Woman)', caption="The women had an even higher makeup of Professional-level education<br>(higher education, post-college) at 62%.")
+#     fig4 = plot_bars(df,"marriage_decade", custom_palette, title='Marriage Decade', caption="Over 75% of the couples were married in the '90s or '00s.")
+#     fig5 = plot_bars(df,"marriage_year", custom_palette, title='Marriage Year', sort_by="category", caption="The highest percentage of couples were married in 1998 (5.5%).")
+#     fig6 = plot_bars(df,"divorce_year", custom_palette, sort_by="category", title='Divorce Year', caption='The highest number of divorces among the couples occurred in <br>2011 (9.8%), with an overall peak between 2008-2011.')
       
-    st.plotly_chart(fig1)
-    st.plotly_chart(fig2)
-    st.plotly_chart(fig3)
-    st.plotly_chart(fig4)
-    st.plotly_chart(fig5)
-    st.plotly_chart(fig6)
+#     st.plotly_chart(fig1)
+#     st.plotly_chart(fig2)
+#     st.plotly_chart(fig3)
+#     st.plotly_chart(fig4)
+#     st.plotly_chart(fig5)
+#     st.plotly_chart(fig6)
 
-st.write("This is outside the container")
+# st.write("This is outside the container")
 
-row1 = st.columns(3)
-row2 = st.columns(3)
+# row1 = st.columns(3)
+# row2 = st.columns(3)
 
-figs = [fig1, fig2, fig3, fig4, fig5, fig6]  # Your charts
-rows = [row1, row2]
+# figs = [fig1, fig2, fig3, fig4, fig5, fig6]  # Your charts
+# rows = [row1, row2]
 
-fig_index = 0
-for r in rows:
-    for col in r:
-        if fig_index < len(figs):
-            with col:
-                st.subheader(f"Chart {fig_index+1}")  # optional title
-                figs[fig_index].update_layout(height=300)
+# fig_index = 0
+# for r in rows:
+#     for col in r:
+#         if fig_index < len(figs):
+#             with col:
+#                 st.subheader(f"Chart {fig_index+1}")  # optional title
+#                 figs[fig_index].update_layout(height=300)
 
-                st.plotly_chart(figs[fig_index], use_container_width=True, key=f"chart{fig_index}")
-            fig_index += 1
+#                 st.plotly_chart(figs[fig_index], use_container_width=True, key=f"chart{fig_index}")
+#             fig_index += 1
 
-with elements("dashboard"):
+from streamlit_elements import elements, dashboard, mui, plotly
 
-    # Keep your original layout and names
-    layout = [
+if "layout" not in st.session_state:
+    st.session_state["layout"] = [
         dashboard.Item("first_item", 0, 0, 2, 2),
         dashboard.Item("second_item", 2, 0, 2, 2, isDraggable=False, moved=False),
-        dashboard.Item("third_item", 0, 2, 1, 1, isResizable=False),
+        dashboard.Item("third_item", 0, 2, 2, 2, isResizable=False),
     ]
 
-    # Callback for layout changes
+with elements("dashboard"):
+    # Use the persistent layout from session state
+    layout = st.session_state["layout"]
+
     def handle_layout_change(updated_layout):
         st.session_state["layout"] = updated_layout
-        print("Updated layout:", updated_layout)
 
-    # Dashboard Grid with your naming
     with dashboard.Grid(layout, onLayoutChange=handle_layout_change):
         # First item
-        with mui.Paper(key="first_item", elevation=3, sx={"p": 1}):
-            mui.Typography("First item", variant="h6")
-            st.plotly_chart(fig1, key="fig1",use_container_width=True)
+        with mui.Paper(key="first_item", elevation=3, sx={"p": 2, "height": "100%"}):
+            mui.Typography("Number of Kids", variant="h6")
+            plotly.chart(fig1, key="plot1")
 
         # Second item
-        with mui.Paper(key="second_item", elevation=3, sx={"p": 1}):
-            mui.Typography("Second item (cannot drag)", variant="h6")
-            st.plotly_chart(fig2, key="fig2",use_container_width=True)
+        with mui.Paper(key="second_item", elevation=3, sx={"p": 2, "height": "100%"}):
+            mui.Typography("Education (Man)", variant="h6")
+            plotly.chart(fig2, key="plot2")
 
         # Third item
-        with mui.Paper(key="third_item", elevation=3, sx={"p": 1}):
-            mui.Typography("Third item (cannot resize)", variant="h6")
-            st.plotly_chart(fig3, key="fig3",use_container_width=True)
+        with mui.Paper(key="third_item", elevation=3, sx={"p": 2, "height": "100%"}):
+            mui.Typography("Education (Woman)", variant="h6")
+            plotly.chart(fig3, key="plot3")
