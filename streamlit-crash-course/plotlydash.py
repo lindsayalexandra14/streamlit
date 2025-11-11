@@ -110,7 +110,6 @@ def plot_bars(df, col, custom_palette, sort_by='percentage', title="Title TBD", 
 
     return fig
 
-
 # -----------------------------
 # Create figures
 # -----------------------------
@@ -130,28 +129,33 @@ figs = {
 }
 
 # -----------------------------
-# Draggable Layout
+# Define layout positions
 # -----------------------------
-layout_items = [
-    dash_draggable.ResponsiveGridLayoutItem(
-        id="fig1", x=0, y=0, w=3, h=3, children=[dcc.Graph(figure=figs["fig1"])], isDraggable=True, isResizable=True),
-    dash_draggable.ResponsiveGridLayoutItem(
-        id="fig2", x=3, y=0, w=3, h=3, children=[dcc.Graph(figure=figs["fig2"])], isDraggable=True, isResizable=True),
-    dash_draggable.ResponsiveGridLayoutItem(
-        id="fig3", x=6, y=0, w=3, h=3, children=[dcc.Graph(figure=figs["fig3"])], isDraggable=True, isResizable=True),
-    dash_draggable.ResponsiveGridLayoutItem(
-        id="fig4", x=0, y=3, w=3, h=3, children=[dcc.Graph(figure=figs["fig4"])], isDraggable=True, isResizable=True),
-    dash_draggable.ResponsiveGridLayoutItem(
-        id="fig5", x=3, y=3, w=3, h=3, children=[dcc.Graph(figure=figs["fig5"])], isDraggable=True, isResizable=True),
-    dash_draggable.ResponsiveGridLayoutItem(
-        id="fig6", x=6, y=3, w=3, h=3, children=[dcc.Graph(figure=figs["fig6"])], isDraggable=True, isResizable=True),
+initial_layout = [
+    {"i": "fig1", "x": 0, "y": 0, "w": 3, "h": 3},
+    {"i": "fig2", "x": 3, "y": 0, "w": 3, "h": 3},
+    {"i": "fig3", "x": 6, "y": 0, "w": 3, "h": 3},
+    {"i": "fig4", "x": 0, "y": 3, "w": 3, "h": 3},
+    {"i": "fig5", "x": 3, "y": 3, "w": 3, "h": 3},
+    {"i": "fig6", "x": 6, "y": 3, "w": 3, "h": 3},
 ]
 
+# -----------------------------
+# Build Dash layout
+# -----------------------------
 app.layout = html.Div([
     html.H1("📊 Divorce Data Dashboard", style={"textAlign": "center"}),
     dash_draggable.ResponsiveGridLayout(
         id="grid",
-        children=layout_items,
+        children=[
+            html.Div(dcc.Graph(figure=figs["fig1"]), key="fig1"),
+            html.Div(dcc.Graph(figure=figs["fig2"]), key="fig2"),
+            html.Div(dcc.Graph(figure=figs["fig3"]), key="fig3"),
+            html.Div(dcc.Graph(figure=figs["fig4"]), key="fig4"),
+            html.Div(dcc.Graph(figure=figs["fig5"]), key="fig5"),
+            html.Div(dcc.Graph(figure=figs["fig6"]), key="fig6"),
+        ],
+        layouts={'lg': initial_layout},
         cols={'lg': 12, 'md': 10, 'sm': 6, 'xs': 4, 'xxs': 2},
         rowHeight=160,
         isDraggable=True,
