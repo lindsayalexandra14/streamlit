@@ -189,33 +189,42 @@ fig6 = plot_bars(df,"divorce_year", custom_palette, sort_by="category", title='D
 #             fig_index += 1
 
 from streamlit_elements import elements, dashboard, mui, plotly
+import streamlit as st
+from streamlit_elements import elements, dashboard, mui
+
+# Assuming fig1, fig2, fig3, fig4, fig5, fig6 are Plotly figures already created
+
+layout = [
+    dashboard.Item("fig1", 0, 0, 3, 3),  # draggable and resizable by default
+    dashboard.Item("fig2", 3, 0, 3, 3),
+    dashboard.Item("fig3", 6, 0, 3, 3),
+    dashboard.Item("fig4", 0, 3, 3, 3),
+    dashboard.Item("fig5", 3, 3, 3, 3),
+    dashboard.Item("fig6", 6, 3, 3, 3),
+]
 
 if "layout" not in st.session_state:
-    st.session_state["layout"] = [
-        dashboard.Item("first_item", 0, 0, 2, 2),
-        dashboard.Item("second_item", 2, 0, 2, 2, isDraggable=False, moved=False),
-        dashboard.Item("third_item", 0, 2, 2, 2, isResizable=False),
-    ]
+    st.session_state["layout"] = layout
+
+def on_layout_change(new_layout):
+    st.session_state["layout"] = new_layout
 
 with elements("dashboard"):
-    # Use the persistent layout from session state
-    layout = st.session_state["layout"]
-
-    def handle_layout_change(updated_layout):
-        st.session_state["layout"] = updated_layout
-
-    with dashboard.Grid(layout, onLayoutChange=handle_layout_change):
-        # First item
-        with mui.Paper(key="first_item", elevation=3, sx={"p": 2, "height": "100%"}):
-            mui.Typography("Number of Kids", variant="h6")
-            plotly.chart(fig1, key="plot1")
-
-        # Second item
-        with mui.Paper(key="second_item", elevation=3, sx={"p": 2, "height": "100%"}):
-            mui.Typography("Education (Man)", variant="h6")
-            plotly.chart(fig2, key="plot2")
-
-        # Third item
-        with mui.Paper(key="third_item", elevation=3, sx={"p": 2, "height": "100%"}):
-            mui.Typography("Education (Woman)", variant="h6")
-            plotly.chart(fig3, key="plot3")
+    with dashboard.Grid(
+        st.session_state["layout"],
+        draggableHandle=".draggable",  # use header for dragging
+        onLayoutChange=on_layout_change,
+    ):
+        for i in range(1, 7):
+            key = f"fig{i}"
+            title_map = {
+                "fig1": "Number of Kids",
+                "fig2": "Education (Man)",
+                "fig3": "Education (Woman)",
+                "fig4": "Marriage Decade",
+                "fig5": "Marriage Year",
+                "fig6": "Divorce Year"
+            }
+            with mui.Paper(key=key, sx={"p": 2, "height": "100%"}):
+                mui.Typography(title_map[key], className="draggable", variant="h6")
+                st.plotly_chart(eval(key), use_container_width=True)
