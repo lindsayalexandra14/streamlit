@@ -1,12 +1,12 @@
 import dash
 from dash import html, dcc
-import dash_grid_layout as dgl
-import plotly.express as px
 import pandas as pd
 import numpy as np
+import plotly.express as px
+import dash_dynamic_grid_layout as dgl
 
 # ---------------------------
-# Data preparation (same as your code)
+# Data preparation
 # ---------------------------
 df = pd.read_csv("divorce.csv")
 df["num_kids"] = df["num_kids"].fillna(0)
@@ -95,33 +95,25 @@ charts = [
 # ---------------------------
 app = dash.Dash(__name__)
 
-# Create draggable/resizable GridItems with caption
-layout_items = []
+grid_children = []
 for idx, c in enumerate(charts):
-    layout_items.append(
-        dgl.GridItem(
-            id=f"chart{idx+1}",
-            children=html.Div([
-                dcc.Graph(figure=c["fig"], style={"height": "100%", "width": "100%"}),
+    grid_children.append(
+        dgl.DraggableWrapper(
+            children=[
+                dcc.Graph(figure=c["fig"], style={"width":"100%", "height":"100%"}),
                 html.Div(c["caption"], style={"font-size":"12px", "margin-top":"5px"})
-            ]),
-            x=(idx%3)*4,  # 3 columns layout
-            y=(idx//3)*4,
-            w=4,
-            h=4
+            ],
+            key=f"chart{idx+1}",
+            minW=3, minH=3
         )
     )
 
-app.layout = html.Div([
-    dgl.ResponsiveGridLayout(
-        children=layout_items,
-        rowHeight=150,
-        width=1200,
-        cols=12,
-        isResizable=True,
-        isDraggable=True
-    )
-])
+app.layout = dgl.DashGridLayout(
+    children=grid_children,
+    rowHeight=150,
+    cols={'lg':12, 'md':10, 'sm':6, 'xs':4, 'xxs':2},
+    style={'height':'900px'}
+)
 
 if __name__ == "__main__":
     app.run_server(debug=True)
