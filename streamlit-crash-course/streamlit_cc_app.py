@@ -188,7 +188,6 @@ fig6 = plot_bars(df,"divorce_year", custom_palette, sort_by="category", title='D
 #                 st.plotly_chart(figs[fig_index], use_container_width=True, key=f"chart{fig_index}")
 #             fig_index += 1
 
-from streamlit_elements import elements, dashboard, mui, plotly
 import streamlit as st
 from streamlit_elements import elements, dashboard, mui
 
