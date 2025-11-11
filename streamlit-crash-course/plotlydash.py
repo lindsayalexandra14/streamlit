@@ -97,4 +97,4 @@ if __name__ == "__main__":
     print("Dash app starting! Use the Codespaces forwarded port to view it.")
     
     # Run Dash server on all interfaces so Codespaces can forward the port
-    app.run_server(debug=True, host='0.0.0.0', port=8050)
+    app.run(debug=True, host='0.0.0.0', port=8050)
