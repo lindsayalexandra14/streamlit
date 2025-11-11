@@ -5,6 +5,16 @@ import numpy as np
 import plotly.express as px
 import dash_dynamic_grid_layout as dgl
 
+import dash
+from dash import html, dcc
+import dash_dynamic_grid_layout as dgl
+# other imports ...
+
+# ---------------------------
+# Create Dash app
+# ---------------------------
+app = dash.Dash(__name__)
+
 # ---------------------------
 # Data preparation
 # ---------------------------
