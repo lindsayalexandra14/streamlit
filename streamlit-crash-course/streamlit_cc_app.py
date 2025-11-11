@@ -1,6 +1,5 @@
 import streamlit as st
 from streamlit_elements import elements, dashboard, mui
-from streamlit_elements import plotly
 import matplotlib.pyplot as plt
 import plotly.express as px
 import pandas as pd
