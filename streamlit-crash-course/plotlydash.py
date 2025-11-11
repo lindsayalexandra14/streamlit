@@ -1,6 +1,6 @@
 import dash
 from dash import html, dcc
-import dash_draggable
+import dash_grid_layout as dgl
 import plotly.express as px
 import pandas as pd
 import numpy as np
@@ -99,7 +99,7 @@ app = dash.Dash(__name__)
 layout_items = []
 for idx, c in enumerate(charts):
     layout_items.append(
-        dash_draggable.GridItem(
+        dgl.GridItem(
             id=f"chart{idx+1}",
             children=html.Div([
                 dcc.Graph(figure=c["fig"], style={"height": "100%", "width": "100%"}),
@@ -113,7 +113,7 @@ for idx, c in enumerate(charts):
     )
 
 app.layout = html.Div([
-    dash_draggable.ResponsiveGridLayout(
+    dgl.ResponsiveGridLayout(
         children=layout_items,
         rowHeight=150,
         width=1200,
