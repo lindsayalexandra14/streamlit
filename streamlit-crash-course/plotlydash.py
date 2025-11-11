@@ -79,4 +79,4 @@ charts = [
     {"fig": plot_bars(df, "num_kids", custom_palette, title="Number of Kids"),
      "caption": "Most of the (divorced) couples had 0 kids (39%) followed by 1 or 2 kids."},
     {"fig": plot_bars(df,"education_man", custom_palette, title='Education (Man)'),
-     "caption": "Most of the men had a Professional-level edu
+     "caption": "Most of the men had a Professional-level edu"
