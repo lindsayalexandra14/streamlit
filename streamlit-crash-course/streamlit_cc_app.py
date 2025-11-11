@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_elements import elements, mui, html
 
 st.title('Python EDA: Divorce Data')
 
@@ -17,10 +18,12 @@ df['dob_man'] = pd.to_datetime(df['dob_man'])
 df['dob_woman'] = pd.to_datetime(df['dob_woman'])
 
 df["age_difference"]=abs(df["dob_man"]-df["dob_woman"])
-df["years_man_older"]=df["dob_man"]-df["dob_woman"]
-df["years_woman_older"]=df["dob_woman"]-df["dob_man"]
-df["years_man_older"] = df["years_man_older"].dt.days // 365
-df["years_woman_older"] = df["years_woman_older"].dt.days // 365
+
+df["days_man_older"]=df["dob_man"]-df["dob_woman"]
+df["days_woman_older"]=df["dob_woman"]-df["dob_man"]
+df["years_man_older"] = np.trunc(df["days_man_older"].dt.days / 365).astype(int)
+df["years_woman_older"] = np.trunc(df["days_woman_older"].dt.days / 365).astype(int)
+
 df["age_difference"] = df["age_difference"].dt.days // 365
 df["income_difference"]=df["income_man"]-df["income_woman"]
 df["marriage_year"]=df["marriage_date"].dt.year
@@ -41,25 +44,32 @@ custom_palette = [
     '#aec7e8',
     '#bbb005']
 
-def plot_bars(df, col, custom_palette):
+def plot_bars(df, col, custom_palette, sort_by='percentage', title="Title TBD", caption='Caption TBD'):
     import pandas as pd
     import plotly.express as px
 
-    # Counts and percentages
     counts = df[col].value_counts()
-    percentages = (df[col].value_counts(normalize=True) * 100).sort_index()  # keep ascending order
+    percentages_raw = df[col].value_counts(normalize=True) * 100
 
-    # Prepare DataFrame
+    # Sorting by category vs. percentage as option when wanting to keep categories
+    # in their existing order (e.g., marriage years)
+    if sort_by == 'category':
+        percentages = percentages_raw.sort_index()
+    elif sort_by == 'percentage':
+        percentages = percentages_raw.sort_values(ascending=False)
+    else:
+        raise ValueError("sort_by must be 'category' or 'percentage'")
+
     plot_df = pd.DataFrame({
         "category": percentages.index.astype(str),  # ensure string type
         "percentage": percentages.values
     })
 
-    # Map colors to categories
+    # Color mapping
     categories = plot_df['category'].tolist()
     color_map = {cat: custom_palette[i % len(custom_palette)] for i, cat in enumerate(categories)}
 
-    # Create figure
+    # Bar chart
     fig = px.bar(
         plot_df,
         x="category",
@@ -69,15 +79,16 @@ def plot_bars(df, col, custom_palette):
         color_discrete_map=color_map
     )
 
-    # Layout
+    # Formatting
     fig.update_layout(
-        title=f"{col} Distribution (%)",
+        title=f'{title} Distribution',
         xaxis_title=col,
         yaxis_title="Percentage (%)",
         width=700,
         height=500,
         font=dict(family="Monospace", size=12, color="black"),
-        showlegend=False  # hide legend if desired,
+        showlegend=False,
+        margin=dict(b=130)
 )
 
     # Hover and text formatting
@@ -89,6 +100,20 @@ def plot_bars(df, col, custom_palette):
                       "Count: %{customdata[0]}<br>" +
                       "Percentage: %{y:.1f}%"
     )
+
+    fig.add_annotation(
+    text=caption,
+    xref="paper", yref="paper",
+    x=0, y=-0.22,
+    showarrow=False,
+    font=dict(size=14, color="black"),
+    xanchor='left', yanchor='top',
+    align="left",
+    bgcolor="rgba(211, 211, 211, 0.5)",
+    bordercolor="gray",
+    borderpad=6,
+    borderwidth=1
+)
 
     return fig
 
@@ -113,16 +138,17 @@ import plotly.express as px
 
 with st.container():
     st.write("This is inside the container")
-    fig1=plot_bars(df,"num_kids", custom_palette)
+    fig1 = plot_bars(df, "num_kids", custom_palette, title="Number of Kids", caption="Most of the (divorced) couples had 0 kids (39%) followed by<br>having 1 or 2 kids.")
     # # # Create figure with specific size
     # fig3 = px.scatter(df, x="income_man", y="income_woman", color="num_kids")
     # fig3.update_layout(width=800, height=500)  # width & height in pixels
-    fig2=plot_bars(df,"education_man", custom_palette)
+    fig2 = plot_bars(df,"education_man", custom_palette, title='Education (Man)', caption="Most of the men had a Professional-level education (higher <br>education, post-college) at 57%.")
+
     # # Show in Streamlit
-    fig3=plot_bars(df,"education_woman", custom_palette)
-    fig4=plot_bars(df,"marriage_decade", custom_palette)
-    fig5=plot_bars(df,"marriage_year", custom_palette)
-    fig6=plot_bars(df,"divorce_year", custom_palette)
+    fig3 = plot_bars(df,"education_woman", custom_palette, title='Education (Woman)', caption="The women had an even higher makeup of Professional-level education<br>(higher education, post-college) at 62%.")
+    fig4 = plot_bars(df,"marriage_decade", custom_palette, title='Marriage Decade', caption="Over 75% of the couples were married in the '90s or '00s.")
+    fig5 = plot_bars(df,"marriage_year", custom_palette, title='Marriage Year', sort_by="category", caption="The highest percentage of couples were married in 1998 (5.5%).")
+    fig6 = plot_bars(df,"divorce_year", custom_palette, sort_by="category", title='Divorce Year', caption='The highest number of divorces among the couples occurred in <br>2011 (9.8%), with an overall peak between 2008-2011.')
       
     st.plotly_chart(fig1)
     st.plotly_chart(fig2)
@@ -149,3 +175,42 @@ for r in rows:
 
                 st.plotly_chart(figs[fig_index], use_container_width=True, key=f"chart{fig_index}")
             fig_index += 1
+
+with elements("dashboard"):
+
+    # You can create a draggable and resizable dashboard using
+    # any element available in Streamlit Elements.
+
+    from streamlit_elements import dashboard
+
+    # First, build a default layout for every element you want to include in your dashboard
+
+    layout = [
+        # Parameters: element_identifier, x_pos, y_pos, width, height, [item properties...]
+        dashboard.Item("first_item", 0, 0, 2, 2),
+        dashboard.Item("second_item", 2, 0, 2, 2, isDraggable=False, moved=False),
+        dashboard.Item("third_item", 0, 2, 1, 1, isResizable=False),
+    ]
+
+    # Next, create a dashboard layout using the 'with' syntax. It takes the layout
+    # as first parameter, plus additional properties you can find in the GitHub links below.
+
+    with dashboard.Grid(layout):
+        mui.Paper("First item", key="first_item")
+        st.plotly_chart(fig1)
+        mui.Paper("Second item (cannot drag)", key="second_item")
+        st.plotly_chart(fig2)
+        mui.Paper("Third item (cannot resize)", key="third_item")
+        st.plotly_chart(fig3)
+    # If you want to retrieve updated layout values as the user move or resize dashboard items,
+    # you can pass a callback to the onLayoutChange event parameter.
+
+    def handle_layout_change(updated_layout):
+        # You can save the layout in a file, or do anything you want with it.
+        # You can pass it back to dashboard.Grid() if you want to restore a saved layout.
+        print(updated_layout)
+
+    with dashboard.Grid(layout, onLayoutChange=handle_layout_change):
+        mui.Paper("First item", key="first_item")
+        mui.Paper("Second item (cannot drag)", key="second_item")
+        mui.Paper("Third item (cannot resize)", key="third_item")
