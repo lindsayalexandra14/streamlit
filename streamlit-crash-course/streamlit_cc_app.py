@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_elements import elements, dashboard, mui, plotly_chart
+from streamlit_elements import elements, dashboard, mui
 
 st.title('Python EDA: Divorce Data')
 
