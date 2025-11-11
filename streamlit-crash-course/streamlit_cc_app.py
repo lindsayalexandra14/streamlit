@@ -195,14 +195,14 @@ with elements("dashboard"):
         # First item
         with mui.Paper(key="first_item", elevation=3, sx={"p": 1}):
             mui.Typography("First item", variant="h6")
-            plotly_chart(fig1, key="fig1")
+            st.plotly_chart(fig1, key="fig1",use_container_width=True)
 
         # Second item
         with mui.Paper(key="second_item", elevation=3, sx={"p": 1}):
             mui.Typography("Second item (cannot drag)", variant="h6")
-            plotly_chart(fig2, key="fig2")
+            st.plotly_chart(fig2, key="fig2",use_container_width=True)
 
         # Third item
         with mui.Paper(key="third_item", elevation=3, sx={"p": 1}):
             mui.Typography("Third item (cannot resize)", variant="h6")
-            plotly_chart(fig3, key="fig3")
+            st.plotly_chart(fig3, key="fig3",use_container_width=True)
