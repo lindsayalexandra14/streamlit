@@ -168,7 +168,7 @@ def plot_histogram(df, x, nbins, xaxis_title, text):
 
 
 pairplot_columns = ['num_kids', 'marriage_duration','income_man','income_woman',
-                   'age_difference','years_woman_older',
+                   'age_difference',
                    'income_difference','marriage_year']
 
 
