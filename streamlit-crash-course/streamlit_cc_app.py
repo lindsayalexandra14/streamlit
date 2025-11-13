@@ -127,39 +127,50 @@ def plot_bars(df, col, custom_palette, sort_by='percentage', title="Title TBD", 
 
     return fig;
 
-def plot_histogram(df,x,nbins,xaxis_title,text):
-  fig = px.histogram(df, x=x, nbins=nbins, marginal="box", color_discrete_sequence=['teal'])
-  fig.update_layout(
-    title=f"{xaxis_title} Distribution",
-    xaxis_title=xaxis_title,
-    yaxis_title="Count",
-    width=600,
-    height=400,
-    margin=dict(b=115)
+def plot_histogram(df, x, nbins, xaxis_title, text):
+    fig = px.histogram(
+        df, 
+        x=x, 
+        nbins=nbins, 
+        marginal="box", 
+        color_discrete_sequence=['teal']
+    )
 
-  )
+    fig.update_layout(
+        title=f"{xaxis_title} Distribution",
+        xaxis_title=xaxis_title,
+        yaxis_title="Count",
+        width=600,
+        height=400,
+        margin=dict(b=115)
+    )
 
-  fig.update_xaxes(automargin=True)
-  fig.add_annotation(
-      text=text,
-      xref="paper", yref="paper",
-      x=0, y=-0.24,
-      showarrow=False,
-      font=dict(size=14, color="black"),
-      xanchor='left', yanchor='top',
-      align="left",
-      bgcolor="rgba(211, 211, 211, 0.5)",
-      bordercolor="gray",
-      borderpad=6,
-      borderwidth=1
-  )
-  fig.show()
+    fig.update_xaxes(automargin=True)
+
+    fig.add_annotation(
+        text=text,
+        xref="paper",
+        yref="paper",
+        x=0,
+        y=-0.24,
+        showarrow=False,
+        font=dict(size=14, color="black"),
+        xanchor='left',
+        yanchor='top',
+        align="left",
+        bgcolor="rgba(211, 211, 211, 0.5)",
+        bordercolor="gray",
+        borderpad=6,
+        borderwidth=1
+    )  
+
+    return fig
+
 
 pairplot_columns = ['num_kids', 'marriage_duration','income_man','income_woman',
                    'age_difference','years_woman_older',
                    'income_difference','marriage_year']
 
-import plotly.express as px
 
 def make_pairplot(
     df,
