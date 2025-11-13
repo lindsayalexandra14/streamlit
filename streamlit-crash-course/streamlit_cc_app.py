@@ -447,11 +447,6 @@ fig13 = make_correlation_heatmap(df, heatmap_palette=heatmap_palette)
 
 fig14 = make_chi2_plot(chi_squared_df)
 
-
-st.plotly_chart(fig12)
-st.plotly_chart(fig13)
-st.plotly_chart(fig14)
-
 tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
     ["Num Kids", "Education Man", "Education Woman", "Marriage Decade", "Marriage Year", "Divorce Year"]
 )
