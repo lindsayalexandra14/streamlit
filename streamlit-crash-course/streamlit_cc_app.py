@@ -198,7 +198,7 @@ def make_pairplot(
         dimensions=pairplot_columns,
         title=fig_title,
         height=1600,
-        width=1200
+        width=3000
     )
 
     # Update traces
