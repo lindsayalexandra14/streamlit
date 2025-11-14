@@ -58,6 +58,25 @@ custom_palette = [
     '#aec7e8',
     '#bbb005']
 
+def st_caption(text):
+    st.markdown(
+        f"""
+        <div style="
+            background-color: rgba(211, 211, 211, 0.5);
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: 1px solid gray;
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 14px 0px 22px 0px;
+        ">
+            {text}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+
 def plot_bars(df, col, custom_palette, sort_by='percentage', title="Title TBD", caption='Caption TBD'):
     import pandas as pd
     import plotly.express as px
@@ -459,20 +478,58 @@ fig13 = make_correlation_heatmap(df, heatmap_palette=heatmap_palette)
 
 fig14 = make_chi2_plot(chi_squared_df)
 
+captions_group1 = [
+    "Most of the couples had 0 kids (39%) followed by 1–2 kids.",
+    "Most of the men had a Professional-level education (57%).",
+    "Most women also had Professional-level education (62%).",
+    "Over 75% of couples were married in the '90s or '00s.",
+    "Highest marriage count occurred in 1998 (5.5%).",
+    "Most divorces occurred between 2008–2011, peak in 2011 (9.8%)."
+]
+
+captions_group2 = [
+    "Median marriage duration is 8 years; most fall within 2–5 years.",
+    "Median income (man): $5,000/mo (IQR $3,200–$8,200).",
+    "Median income (woman): $5,000/mo with slightly lower upper range.",
+    "Median age difference is 2 years; most fall between 1–4 years.",
+    "Median years woman older = 1; often the woman is slightly older."
+]
+
+
 tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
     ["Num Kids", "Education Man", "Education Woman", "Marriage Decade", "Marriage Year", "Divorce Year"]
 )
-for tab, fig in zip([tab1, tab2, tab3, tab4, tab5, tab6], [fig1, fig2, fig3, fig4, fig5, fig6]):
+
+# for tab, fig in zip([tab1, tab2, tab3, tab4, tab5, tab6], [fig1, fig2, fig3, fig4, fig5, fig6]):
+#     with tab:
+#         st.plotly_chart(fig, use_container_width=True)
+
+for tab, fig, caption in zip(
+    [tab1, tab2, tab3, tab4, tab5, tab6],
+    [fig1, fig2, fig3, fig4, fig5, fig6],
+    captions_group1
+):
     with tab:
         st.plotly_chart(fig, use_container_width=True)
+        st_caption(caption)
 
 # Group 2: figs 7-11
 tab7, tab8, tab9, tab10, tab11 = st.tabs(
     ["Marriage Duration","Income Man","Income Woman","Age Difference","Years Woman Older"]
 )
-for tab, fig in zip([tab7, tab8, tab9, tab10, tab11], [fig7, fig8, fig9, fig10, fig11]):
+
+for tab, fig, caption in zip(
+    [tab7, tab8, tab9, tab10, tab11],
+    [fig7, fig8, fig9, fig10, fig11],
+    captions_group2
+):
     with tab:
         st.plotly_chart(fig, use_container_width=True)
+        st_caption(caption)
+
+# for tab, fig in zip([tab7, tab8, tab9, tab10, tab11], [fig7, fig8, fig9, fig10, fig11]):
+#     with tab:
+#         st.plotly_chart(fig, use_container_width=True)
 
 # Remaining figures
 st.plotly_chart(fig12, use_container_width=True)  # pairplot
