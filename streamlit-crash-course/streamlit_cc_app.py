@@ -121,10 +121,10 @@ st.markdown("""
 
 
 def tight_caption(text):
-    st.markdown(f"<div class='caption-block'><p>{text}</p></div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='tight_caption'>{text}</div>", unsafe_allow_html=True)
 
 def headers(text):
-    st.markdown(f"<div class='caption-block'><p>{text}</p></div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='headers'>{text}</div>", unsafe_allow_html=True)
 
 # def st_caption(text):
 #     st.markdown(
