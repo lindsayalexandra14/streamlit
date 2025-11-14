@@ -95,7 +95,7 @@ st.image("""
          width="150">
              
     """,
-         unsafe_allow_html=True)
+    unsafe_allow_html=True)
 
 st.markdown("""
 <style>
