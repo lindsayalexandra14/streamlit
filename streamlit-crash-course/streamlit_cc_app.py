@@ -418,17 +418,17 @@ def make_chi2_plot(
     # Expand x-axis
     ax.set_xlim(0, max_chi2 * 1.5)
 
-    # Caption
-plt.figtext(
-    0.5, -0.25,          # x = 0.5 centers horizontally
-    caption_text,
-    fontsize=10,
-    color='black',
-    wrap=True,
-    horizontalalignment='center',
-    bbox=dict(facecolor='lightgray', alpha=0.5,
-              edgecolor='gray', boxstyle='round,pad=0.5')
-)
+        # Caption
+    plt.figtext(
+        0.5, -0.25,          # x = 0.5 centers horizontally
+        caption_text,
+        fontsize=10,
+        color='black',
+        wrap=True,
+        horizontalalignment='center',
+        bbox=dict(facecolor='lightgray', alpha=0.5,
+                edgecolor='gray', boxstyle='round,pad=0.5')
+    )
 
     # Final touches
     plt.title(fig_title, fontsize=14)
