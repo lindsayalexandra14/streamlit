@@ -401,8 +401,7 @@ for col1, col2 in combinations(df_chi.columns, 2):
 chi_squared_df = pd.DataFrame(results).sort_values('p_value').reset_index(drop=True)
 
 def make_chi2_plot(
-    chi_squared_df,
-    fig_title="Chi-Squared Tests"
+    chi_squared_df
 ):
     # # Default caption text
     # if caption_text is None:
@@ -421,6 +420,16 @@ def make_chi2_plot(
     # Dynamic figure size
     fig = plt.figure(figsize=(8, max(4, 0.3 * len(chi_squared_df))))
 
+
+    plt.figtext(
+    0.5,      # centered horizontally
+    0.97,     # slightly above the plot
+    "Chi-squared Tests",
+    ha="center",
+    va="center",
+    fontsize=10,          # small but bold like Plotly
+    fontweight="bold",
+)
     # Custom color palette
     unique_hues = chi_squared_df['chi2_stat'].nunique()
     palette = custom_palette[:unique_hues]
@@ -485,10 +494,9 @@ def make_chi2_plot(
     # )
 
     # Final touches
-    plt.title(fig_title, fontsize=14)
     plt.xlabel('Chi-2 Statistic')
     plt.ylabel('')
-    plt.tight_layout()
+    plt.tight_layout(rect=[0, 0, 1, 0.95])  # leave space for your custom title
     plt.legend().remove()
 
     return fig
