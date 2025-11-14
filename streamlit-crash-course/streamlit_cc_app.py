@@ -308,7 +308,6 @@ sns.palplot(heatmap_palette)
 def make_correlation_heatmap(
     df,
     heatmap_palette="coolwarm",
-    fig_title="Correlation Heatmap",
     figsize=(7, 5)
 ):
     # # Default caption
@@ -333,12 +332,12 @@ def make_correlation_heatmap(
     fig.patch.set_alpha(0)
 
     plt.figtext(
-    0.5,      # centered horizontally
+    0.1,      # centered horizontally
     0.97,     # slightly above the plot
     "Correlation Heatmap",
-    ha="center",
-    va="center",
-    fontsize=14,          # small but bold like Plotly
+    ha="left",
+    va="left",
+    fontsize=12,          # small but bold like Plotly
     fontweight="bold",
 )
 
@@ -357,7 +356,6 @@ def make_correlation_heatmap(
     )
 
     # Formatting
-    plt.title(fig_title, fontsize=16)
     plt.xticks(rotation=45, ha='right')
     plt.yticks(rotation=0)
     plt.tight_layout(rect=[0, 0, 1, 0.95])  # leave space for your custom title
