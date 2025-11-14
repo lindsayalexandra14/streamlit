@@ -19,6 +19,7 @@ st.title("Python EDA: Divorce Data")
 df = pd.read_csv("divorce.csv")
 
 df["num_kids"]=df["num_kids"].fillna(0)
+df["marriage_dur"]=df["marriage_duration"]
 
 df = df.dropna(subset=["education_man"])
 
