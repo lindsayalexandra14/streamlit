@@ -58,23 +58,41 @@ custom_palette = [
     '#aec7e8',
     '#bbb005']
 
-def st_caption(text):
-    st.markdown(
-        f"""
-        <div style="
-            background-color: rgba(211, 211, 211, 0.5);
-            padding: 12px 18px;
-            border-radius: 12px;
-            border: 1px solid gray;
-            font-size: 14px;
-            line-height: 1.4;
-            margin: 14px 0px 22px 0px;
-        ">
-            {text}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+# Tighten spacing for st.caption
+st.markdown("""
+<style>
+.caption-block p {
+    margin-top: -10px !important;   /* pull caption upward */
+    margin-bottom: 5px !important;  /* tighten spacing below */
+    padding: 8px 12px;
+    background: rgba(200,200,200,0.35);
+    border: 1px solid #aaa;
+    border-radius: 12px;
+    font-size: 0.9rem;
+}
+</style>
+""", unsafe_allow_html=True)
+
+def tight_caption(text):
+    st.markdown(f"<div class='caption-block'><p>{text}</p></div>", unsafe_allow_html=True)
+
+# def st_caption(text):
+#     st.markdown(
+#         f"""
+#         <div style="
+#             background-color: rgba(211, 211, 211, 0.5);
+#             padding: 12px 18px;
+#             border-radius: 12px;
+#             border: 1px solid gray;
+#             font-size: 14px;
+#             line-height: 1.4;
+#             margin: 14px 0px 22px 0px;
+#         ">
+#             {text}
+#         </div>
+#         """,
+#         unsafe_allow_html=True
+#     )
 
 
 def plot_bars(df, col, custom_palette, sort_by='percentage', title="Title TBD", caption='Caption TBD'):
@@ -520,7 +538,7 @@ for tab, fig, caption in zip(
 ):
     with tab:
         st.plotly_chart(fig, use_container_width=True)
-        st_caption(caption)
+        tight_caption(caption)
 
 # Group 2: figs 7-11
 tab7, tab8, tab9, tab10, tab11 = st.tabs(
@@ -534,7 +552,7 @@ for tab, fig, caption in zip(
 ):
     with tab:
         st.plotly_chart(fig, use_container_width=True)
-        st_caption(caption)
+        tight_caption(caption)
 
 # for tab, fig in zip([tab7, tab8, tab9, tab10, tab11], [fig7, fig8, fig9, fig10, fig11]):
 #     with tab:
