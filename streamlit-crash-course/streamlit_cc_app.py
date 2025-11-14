@@ -264,8 +264,8 @@ pairplot_columns = ['num_kids', 'marriage_dur','inc_man','inc_woman',
 
 def make_pairplot(
     df,
-    pairplot_columns,
-    fig_title="Scatterplots (pairplot)"
+    pairplot_columns
+    # fig_title="Scatterplots (pairplot)"
 ):
     # Default annotations
     # if annotation1 is None:
@@ -284,7 +284,7 @@ def make_pairplot(
     fig = px.scatter_matrix(
         df,
         dimensions=pairplot_columns,  # <- must match df_temp columns
-        title=fig_title,
+        # title=fig_title,
         height=900,
         width=1200
     )
@@ -367,15 +367,15 @@ def make_correlation_heatmap(
         # Make background transparent
     fig.patch.set_alpha(0)
 
-    plt.figtext(
-    0.5,      # centered horizontally
-    0.97,     # slightly above the plot
-    "Correlation Heatmap",
-    ha="center",
-    va="center",
-    fontsize=10,          # small but bold like Plotly
-    fontweight="bold",
-)
+#     plt.figtext(
+#     0.5,      # centered horizontally
+#     0.97,     # slightly above the plot
+#     "Correlation Heatmap",
+#     ha="center",
+#     va="center",
+#     fontsize=10,          # small but bold like Plotly
+#     fontweight="bold",
+# )
 
     # Draw heatmap
     sns.heatmap(
@@ -457,15 +457,15 @@ def make_chi2_plot(
     fig = plt.figure(figsize=(8, max(4, 0.3 * len(chi_squared_df))))
 
 
-    plt.figtext(
-    0.5,      # centered horizontally
-    0.97,     # slightly above the plot
-    "Chi-squared Tests",
-    ha="center",
-    va="center",
-    fontsize=10,          # small but bold like Plotly
-    fontweight="bold",
-)
+#     plt.figtext(
+#     0.5,      # centered horizontally
+#     0.97,     # slightly above the plot
+#     "Chi-squared Tests",
+#     ha="center",
+#     va="center",
+#     fontsize=10,          # small but bold like Plotly
+#     fontweight="bold",
+# )
     # Custom color palette
     unique_hues = chi_squared_df['chi2_stat'].nunique()
     palette = custom_palette[:unique_hues]
