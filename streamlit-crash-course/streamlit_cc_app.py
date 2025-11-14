@@ -283,10 +283,12 @@ def make_pairplot(
 
 
 heatmap_palette = sns.diverging_palette(
-    3550,  # Hue for end 1
-    44,    # Hue for end 2
-    n=9,   # Number of colors
-    center="light"  # midpoint lighter
+    6400,  # Hue for end 1 
+    5300,   # Hue for end 2
+    n=7,  # Number of colors
+    center="light",  # midpoint lighter
+    s=80,  # Saturation
+    l=65   # Lightness
 )
 
 sns.palplot(heatmap_palette)
