@@ -214,22 +214,20 @@ pairplot_columns = ['num_kids', 'marriage_dur','inc_man','inc_woman',
 def make_pairplot(
     df,
     pairplot_columns,
-    fig_title="Pairplot",
-    annotation1=None,
-    annotation2=None
+    fig_title="Pairplot"
 ):
     # Default annotations
-    if annotation1 is None:
-        annotation1 = (
-            "There is a strong negative correlation between marriage year & marriage duration;"
-            "<br>the more recently the couples were married, the shorter the "
-            "marriage duration."
-        )
-    if annotation2 is None:
-        annotation2 = (
-            "There is a strong positive correlation between the income of the man and the income "
-            "<br>of the woman; if the income of the man is high or low, so is that of the woman"
-        )
+    # if annotation1 is None:
+    #     annotation1 = (
+    #         "There is a strong negative correlation between marriage year & marriage duration;"
+    #         "<br>the more recently the couples were married, the shorter the "
+    #         "marriage duration."
+    #     )
+    # if annotation2 is None:
+    #     annotation2 = (
+    #         "There is a strong positive correlation between the income of the man and the income "
+    #         "<br>of the woman; if the income of the man is high or low, so is that of the woman"
+    #     )
 
     # Create scatter matrix
     fig = px.scatter_matrix(
@@ -557,28 +555,60 @@ for tab, fig, caption in zip(
 #     with tab:
 #         st.plotly_chart(fig, use_container_width=True)
 
-# Remaining figures
-st.plotly_chart(fig12, use_container_width=True)  # pairplot
-st.pyplot(fig13)  # correlation heatmap
-st.pyplot(fig14)  # chi2 plot
+pairplot_caption1 = (
+            "There is a strong negative correlation between marriage year & marriage duration;"
+            "<br>the more recently the couples were married, the shorter the "
+            "marriage duration."
+        )
+pairplot_caption2 = (
+            "There is a strong positive correlation between the income of the man and the income "
+            "<br>of the woman; if the income of the man is high or low, so is that of the woman")
 
-st.markdown(
-    """
-    <div style="
-        background-color: rgba(211, 211, 211, 0.5);
-        padding: 12px 18px;
-        border-radius: 12px;
-        border: 1px solid gray;
-        font-size: 14px;
-        line-height: 1.4;
-        margin-top: 10px;
-    ">
-        <strong>Correlation Insight:</strong><br>
-        Marriage year has a strong negative correlation with marriage duration.
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+corrplot_caption = (
+            "The heatmap shows the correlations between all the numerical variables:\n"
+            "\n"
+            "Strong positive correlations:\n"
+            "• Income (Man) & Income (Woman)\n"
+            "• Number of Kids & Marriage Duration\n"
+            "• Age Difference & Years Woman Older\n\n"
+            "Strong negative correlations:\n"
+            "• Marriage Duration & Marriage Year\n"
+            "• Number of Kids & Marriage Year and Decade\n"
+            "• Age Difference & Years Man Older"
+        )
+chi_caption = (
+            "Chi-Squared test pairs the categorical variables to see if a significant relationship exists:\n"
+            "(Note, number of kids has been used as numerical & categorical given its few unique values)\n"
+            "\n"
+            "• Highest signficance in relationship between Income (Man) & Income (Woman)\n"
+            "• All other relationships significant except for Education (Man) & Number of Kids"
+        )
+# Remaining figures
+st.plotly_chart(fig12, use_container_width=True)
+tight_caption(pairplot_caption1)  # pairplot
+tight_caption(pairplot_caption2) 
+st.pyplot(fig13)  # correlation heatmap
+tight_caption(corrplot_caption)
+st.pyplot(fig14)  # chi2 plot
+tight_caption(chi_caption)
+
+# st.markdown(
+#     """
+#     <div style="
+#         background-color: rgba(211, 211, 211, 0.5);
+#         padding: 12px 18px;
+#         border-radius: 12px;
+#         border: 1px solid gray;
+#         font-size: 14px;
+#         line-height: 1.4;
+#         margin-top: 10px;
+#     ">
+#         <strong>Correlation Insight:</strong><br>
+#         Marriage year has a strong negative correlation with marriage duration.
+#     </div>
+#     """,
+#     unsafe_allow_html=True
+# )
 
 
 
