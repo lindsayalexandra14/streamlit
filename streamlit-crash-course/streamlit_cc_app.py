@@ -35,6 +35,7 @@ st.markdown(
         color:#666;
         margin-top:0px;
         font-weight:300;
+        font-style: italic;
     ">
         Exploratory Data Analysis
     </h4>
