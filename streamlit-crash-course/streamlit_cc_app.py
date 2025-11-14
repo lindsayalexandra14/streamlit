@@ -749,6 +749,6 @@ tight_caption("The linear regression model shows an Adjusted R^2 of 0.608 which 
 "(-0.52). This means that there was a longer marriage duration the more kids the couple had and<br>" \
 "the earlier the marriage decade.<br>"
 "<br>There is an moderate amount of multicollinearity with marriage decade & number of kids, <br>" \
-"as shown in the previous chi-squared test and in the VIF check above, which is prompting the condition<br>" \
-"number above to flag multicollinearity in the model. However, the VIF is less than 10 for each features,<br>"
-"which is acceptable and does not warrant removal of any variables.")
+"as shown in the previous chi-squared test and in the VIF check above, which is prompting the<br>" \
+"condition number above to flag multicollinearity in the model. However, the VIF is less than 10<br>"
+"for each features, which is acceptable and does not warrant removal of any variables.")
