@@ -744,7 +744,7 @@ tight_caption("The linear regression model shows an Adjusted R^2 of 0.608 which 
 "small # of variables in the model. This means that the variables in the model are able to explain<br>" \
 "60.8% of the variance in marriage duration.<br> "
 "<br>"
-"The number of kids and the marriage decade are significant, with number of kids having a<br>" \
+"The number of kids and the marriage decade are significant (p-value<0.05), number of kids having a<br>" \
 "positive relationship (coefficient: 1.66) and marriage decade having a negative relationship<br>"
 "(-0.52). This means that there was a longer marriage duration the more kids the couple had and<br>" \
 "the earlier the marriage decade.<br>"
