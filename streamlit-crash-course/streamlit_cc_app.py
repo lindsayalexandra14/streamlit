@@ -23,7 +23,7 @@ st.markdown(
         font-family:'Dancing Script', cursive;
         font-size:48px;
         color:#333;
-        margin-bottom:2px;
+        margin-bottom:0px;
     ">
         Divorced Couples
     </h1>
