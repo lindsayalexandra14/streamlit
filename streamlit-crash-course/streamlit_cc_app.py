@@ -245,11 +245,10 @@ def make_pairplot(
     return fig
 
 
-
 heatmap_palette = sns.diverging_palette(
     3550,  # Hue for end 1
-    44,   # Hue for end 2
-    n=9,  # Number of colors
+    44,    # Hue for end 2
+    n=9,   # Number of colors
     center="light"  # midpoint lighter
 )
 
@@ -311,6 +310,7 @@ def make_correlation_heatmap(
     )
 
     return fig
+
 
 columns_chi = ['education_man','education_woman', 'num_kids','marriage_decade']
 
