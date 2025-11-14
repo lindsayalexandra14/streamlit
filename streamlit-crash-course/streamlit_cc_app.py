@@ -14,11 +14,6 @@ from statsmodels.stats.outliers_influence import variance_inflation_factor
 from statsmodels.tools.tools import add_constant
 import streamlit as st
 
-st.set_page_config(
-    page_title="Divorce Data EDA",
-    initial_sidebar_state="expanded"
-)
-
 st.title("Python EDA: Divorce Data")
 
 df = pd.read_csv("divorce.csv")
@@ -202,8 +197,8 @@ def make_pairplot(
         df,
         dimensions=pairplot_columns,
         title=fig_title,
-        height=1600,
-        width=3000
+        height=900,
+        width=1200
     )
 
     # Update traces
