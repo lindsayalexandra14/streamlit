@@ -43,8 +43,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
-
 df = pd.read_csv("divorce.csv")
 
 df["num_kids"]=df["num_kids"].fillna(0)
