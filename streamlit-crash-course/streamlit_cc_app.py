@@ -18,26 +18,33 @@ st.markdown(
     """
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
-    <h1 style="
-        text-align: center;
-        color: #333;
-        margin-top: -20px;
-        font-size: 48px;
-        font-family: 'Dancing Script', cursive;
-    ">
-        Divorced Couples EDA
-    </h1>
+    <div style="text-align:center;">
+        <h1 style="
+            color:#333;
+            margin-bottom:0px;
+            font-size:48px;
+            font-family:'Dancing Script', cursive;
+        ">
+            Divorced Couples EDA
+        </h1>
 
-    <h3 style="
-        text-align: center;
-        color: #555;
-        font-weight: normal;
-        margin-top: -10px;
-        font-size: 20px;
-        font-family: 'Abel';
-    ">
-        Exploratory Data Analysis
-    </h3>
+        <div style="
+            width:120px;
+            height:2px;
+            background-color:#aaa;
+            margin:6px auto 4px auto;
+            border-radius:2px;
+        "></div>
+
+        <p style="
+            color:#666;
+            font-size:18px;
+            margin-top:0px;
+            font-family:sans-serif;
+        ">
+            Insights into relationships, income patterns, and time trends
+        </p>
+    </div>
     """,
     unsafe_allow_html=True
 )
