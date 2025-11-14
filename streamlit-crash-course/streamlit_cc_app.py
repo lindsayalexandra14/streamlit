@@ -207,6 +207,13 @@ def make_pairplot(
         marker=dict(size=5, opacity=0.7, color='lightseagreen')
     )
 
+    # Rotate all x-axis labels
+    for i in range(1, len(pairplot_columns)**2 + 1):
+        xaxis_name = f"xaxis{i}" if i > 1 else "xaxis"
+        yaxis_name = f"yaxis{i}" if i > 1 else "yaxis"
+        fig.layout[xaxis_name].tickangle = 45
+        fig.layout[yaxis_name].tickangle = 0  # adjust y if needed
+
     # Layout & margin
     fig.update_layout(margin=dict(b=250))
 
@@ -238,12 +245,6 @@ def make_pairplot(
         borderpad=6,
         borderwidth=1
     )
-
-    for key, axis in fig.layout.items():
-        if key.startswith("xaxis"):
-            axis.tickangle = 45  # rotate x-axis labels
-        if key.startswith("yaxis"):
-            axis.tickangle = 0   # rotate y-axis labels if needed
 
     return fig
 
