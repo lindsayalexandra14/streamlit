@@ -90,20 +90,38 @@ custom_palette = [
     '#1bc2bb'
 ]
 
-# Tighten spacing for st.caption
 st.markdown("""
 <style>
-.caption-block p {
+/* Existing small caption style */
+.tight_caption p {
     padding: 8px 12px;
     background: rgba(200,200,200,0.35);
     border: 1px solid #aaa;
     border-radius: 12px;
     font-size: 0.9rem;
 }
+
+/* NEW large header-style caption */
+.headers p {
+    background: #f2f2f7;
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    color: #222;
+}
 </style>
 """, unsafe_allow_html=True)
 
+
 def tight_caption(text):
+    st.markdown(f"<div class='caption-block'><p>{text}</p></div>", unsafe_allow_html=True)
+
+def headers(text):
     st.markdown(f"<div class='caption-block'><p>{text}</p></div>", unsafe_allow_html=True)
 
 # def st_caption(text):
@@ -549,6 +567,8 @@ fig13 = make_correlation_heatmap(df, heatmap_palette=heatmap_palette)
 
 fig14 = make_chi2_plot(chi_squared_df)
 
+headers("Bar Charts")
+
 captions_group1 = [
     "Most of the couples had 0 kids (39%) followed by 1–2 kids.",
     "Most of the men had a Professional-level education (57%).",
@@ -583,6 +603,8 @@ for tab, fig, caption in zip(
     with tab:
         st.plotly_chart(fig, use_container_width=True)
         tight_caption(caption)
+
+headers("Histograms")
 
 # Group 2: figs 7-11
 tab7, tab8, tab9, tab10, tab11 = st.tabs(
@@ -640,13 +662,18 @@ chi_caption = (
             "• All other relationships significant except for Education (Man) & Number of Kids"
         )
 # Remaining figures
+headers("Scatterplots")
 st.plotly_chart(fig12, use_container_width=True)
 tight_caption(pairplot_caption1)  # pairplot
 tight_caption(pairplot_caption2) 
+headers("Correlation Heatmap")
 st.pyplot(fig13)  # correlation heatmap
 tight_caption(corrplot_caption)
+headers("Chi-squared Tests")
 st.pyplot(fig14)  # chi2 plot
 tight_caption(chi_caption)
+
+headers("Linear Regression")
 
 # st.markdown(
 #     """
@@ -725,7 +752,7 @@ print(vif_data)
 # figs = [fig1, fig2, fig3, fig4, fig5, fig6]  # Your charts
 # rows = [row1, row2]
 
-# fig_index = 0
+# fig_index = 0s
 # for r in rows:
 #     for col in r:
 #         if fig_index < len(figs):
