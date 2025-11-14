@@ -39,9 +39,8 @@ st.markdown(
     ">
         Exploratory Data Analysis
     </h4>
-    </h5>
 
-        <h5 style="
+    <h5 style="
         text-align:center;
         font-family:'Inter', sans-serif;
         font-size:18px;
