@@ -281,7 +281,6 @@ def make_correlation_heatmap(
 
         # Make background transparent
     fig.patch.set_alpha(0)
-    ax.set_facecolor("none")
 
     # Draw heatmap
     sns.heatmap(
