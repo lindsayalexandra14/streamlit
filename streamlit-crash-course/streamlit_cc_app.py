@@ -171,16 +171,6 @@ pairplot_columns = ['num_kids', 'marriage_duration','income_man','income_woman',
                    'age_difference',
                    'income_difference','marriage_year']
 
-short_names = {
-    'num_kids': 'Kids',
-    'marriage_duration': 'Duration',
-    'income_man': 'Income M',
-    'income_woman': 'Income W',
-    'age_difference': 'Age Diff',
-    'income_difference': 'Income Diff',
-    'marriage_year': 'Year'
-}
-
 def make_pairplot(
     df,
     pairplot_columns,
@@ -201,26 +191,9 @@ def make_pairplot(
             "of the woman (e.g., if the income of the man is high or <br>low, so is that of the woman)"
         )
 
-    # Mapping for short column names
-    short_names = {
-        'num_kids': 'Kids',
-        'marriage_duration': 'Duration',
-        'income_man': 'Income M',
-        'income_woman': 'Income W',
-        'age_difference': 'Age Diff',
-        'income_difference': 'Income Diff',
-        'marriage_year': 'Year'
-    }
-
-    # Create temporary DataFrame with renamed columns
-    df_temp = df[pairplot_columns].rename(columns=short_names)
-
-    # Use renamed columns as dimensions
-    dimensions = list(df_temp.columns)
-
     # Create scatter matrix
     fig = px.scatter_matrix(
-        df_temp,
+        df,
         dimensions=dimensions,  # <- must match df_temp columns
         title=fig_title,
         height=1200,
@@ -264,11 +237,6 @@ def make_pairplot(
         borderpad=6,
         borderwidth=1
     )
-
-    # Rotate x-axis tick labels for all subplots
-    for i in range(1, len(dimensions)**2 + 1):
-        xaxis_name = f"xaxis{i}" if i > 1 else "xaxis"
-        fig.layout[xaxis_name].tickangle = 45
 
     return fig
 
