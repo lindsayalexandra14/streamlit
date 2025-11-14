@@ -45,18 +45,21 @@ df["divorce_year"]=df["divorce_date"].dt.year
 df["marriage_decade"]=df["marriage_date"].dt.year // 10 * 10
 
 custom_palette = [
-    '#8dd3c7',
-    '#bebada',
-    '#ab8072',
-    '#80b1d3',
-    '#b3de69',
-    '#fdb462',
-    '#fccde5',
-    '#d9d9d9',
-    '#bc80bd',
-    '#17becf',
-    '#aec7e8',
-    '#bbb005']
+    '#dfbefb',
+    '#C49C94',
+    '#dfd4c9',
+    '#FAC287',
+    '#cb95f9',
+    '#B3B3F2',
+    '#895b3a',
+    '#8383F7',
+    '#C2C8FF',
+    '#e7dbf3',
+    '#CACACC',
+    '#C0F0EF',
+    '#101827',
+    '#1bc2bb'
+]
 
 # Tighten spacing for st.caption
 st.markdown("""
@@ -173,7 +176,7 @@ def plot_histogram(df, x, nbins, xaxis_title):
         x=x, 
         nbins=nbins, 
         marginal="box", 
-        color_discrete_sequence=['teal']
+        color_discrete_sequence=['tan']
     )
 
     fig.update_layout(
@@ -396,11 +399,8 @@ def make_chi2_plot(
     fig = plt.figure(figsize=(8, max(4, 0.3 * len(chi_squared_df))))
 
     # Custom color palette
-    palette = sns.diverging_palette(
-        280, 40, s=70, l=50,
-        n=len(chi_squared_df),
-        as_cmap=False
-    )
+    unique_hues = chi_squared_df['chi2_stat'].nunique()
+    palette = custom_palette[:unique_hues]
 
     # Barplot
     ax = sns.barplot(
