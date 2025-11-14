@@ -310,7 +310,7 @@ def make_correlation_heatmap(
         wrap=True,
         horizontalalignment='center',
         bbox=dict(facecolor='lightgray', alpha=0.5,
-                edgecolor='gray', boxstyle='round,pad=0.5')
+                edgecolor='gray')
     )
 
     return fig
