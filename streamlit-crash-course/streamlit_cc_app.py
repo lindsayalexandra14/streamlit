@@ -197,7 +197,7 @@ def make_pairplot(
         df,
         dimensions=pairplot_columns,
         title=fig_title,
-        height=900,
+        height=1200,
         width=1200
     )
 
@@ -238,6 +238,9 @@ def make_pairplot(
         borderpad=6,
         borderwidth=1
     )
+
+    fig.update_xaxes(tickangle=45) 
+    fig.update_yaxes(tickangle=0) 
 
     return fig
 
