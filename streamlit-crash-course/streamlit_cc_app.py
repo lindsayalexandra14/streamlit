@@ -18,18 +18,30 @@ st.markdown(
     """
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
-    <h1 style='
+    <h1 style="
         text-align: center;
         color: #333;
         margin-top: -20px;
-        font-size: 50px;
-        font-family: "Dancing Script", cursive;
-    '>
+        font-size: 48px;
+        font-family: 'Dancing Script', cursive;
+    ">
         Divorced Couples EDA
     </h1>
+
+    <h3 style="
+        text-align: center;
+        color: #555;
+        font-weight: normal;
+        margin-top: -10px;
+        font-size: 20px;
+        font-family: 'Abel';
+    ">
+        Exploratory Data Analysis
+    </h3>
     """,
     unsafe_allow_html=True
 )
+
 
 
 df = pd.read_csv("divorce.csv")
