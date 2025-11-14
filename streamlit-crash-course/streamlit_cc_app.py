@@ -36,7 +36,7 @@ df["years_woman_older"] = np.trunc(df["days_woman_older"].dt.days / 365).astype(
 
 df["age_diff"] = df["age_diff"].dt.days // 365
 df["income_diff"]=df["income_man"]-df["income_woman"]
-df["marriage_year"]=df["marriage_date"].dt.year
+df["marriage_yr"]=df["marriage_date"].dt.year
 df["divorce_year"]=df["divorce_date"].dt.year
 df["marriage_decade"]=df["marriage_date"].dt.year // 10 * 10
 
@@ -167,9 +167,9 @@ def plot_histogram(df, x, nbins, xaxis_title, text):
     return fig
 
 
-pairplot_columns = ['num_kids', 'marriage_duration','income_man','income_woman',
+pairplot_columns = ['num_kids', 'marriage_dur','income_man','income_woman',
                    'age_diff',
-                   'income_diff','marriage_year']
+                   'income_diff','marriage_yr']
 
 def make_pairplot(
     df,
@@ -433,10 +433,10 @@ fig2 = plot_bars(df,"education_man", custom_palette, title='Education (Man)', ca
 
 fig3 = plot_bars(df,"education_woman", custom_palette, title='Education (Woman)', caption="The women had an even higher makeup of Professional-level education<br>(higher education, post-college) at 62%.")
 fig4 = plot_bars(df,"marriage_decade", custom_palette, title='Marriage Decade', caption="Over 75% of the couples were married in the '90s or '00s.")
-fig5 = plot_bars(df,"marriage_year", custom_palette, title='Marriage Year', sort_by="category", caption="The highest percentage of couples were married in 1998 (5.5%).")
+fig5 = plot_bars(df,"marriage_yr", custom_palette, title='Marriage Year', sort_by="category", caption="The highest percentage of couples were married in 1998 (5.5%).")
 fig6 = plot_bars(df,"divorce_year", custom_palette, sort_by="category", title='Divorce Year', caption='The highest number of divorces among the couples occurred in <br>2011 (9.8%), with an overall peak between 2008-2011.')
 
-fig7 = plot_histogram(df,"marriage_duration",20,"Marriage Duration",text="The median marriage duration is 8 years. The heaviest<br>concentration is between 2-5 years and the max is 33 years.")
+fig7 = plot_histogram(df,"marriage_dur",20,"Marriage Duration",text="The median marriage duration is 8 years. The heaviest<br>concentration is between 2-5 years and the max is 33 years.")
 fig8 = plot_histogram(df,"income_man",15,"Income (Man)",text="The median monthly income for the men was 5,000 dollars <br>with an IQR of 3,200-8,200 dollars and a max of ~19k.")
 fig9 = plot_histogram(df,"income_woman",15,"Income (Woman)",text="The median monthly income for the women was also 5,000 dollars <br>with a bit lower Q3 (7,500 dollars) and max (~15k).")
 fig10 = plot_histogram(df,"age_diff",10,"Age Difference",text="The median age difference of the couple was 2 years, with<br>most ranging from 1-4 years")
@@ -474,7 +474,7 @@ df_encoded = pd.get_dummies(df, columns=['marriage_decade'], drop_first=True)
 
 X_data = df[['age_diff','income_diff','num_kids','marriage_decade']].astype(float)
 
-y_target = df['marriage_duration'].astype(float)
+y_target = df['marriage_dur'].astype(float)
 
 x_train, x_test, y_train, y_test = holdout(X_data, y_target, test_size=0.2, random_state=0)
 
