@@ -90,7 +90,8 @@ custom_palette = [
     '#1bc2bb'
 ]
 
-st.image("https://www.github.com/lindsayalexandra14/ds_portfolio/main/raw/1_projects/data_visualization/streamlit/divorce/rings.png", 
+st.image("https://raw.githubusercontent.com/lindsayalexandra14/ds_portfolio/main/1_projects/data_visualization/streamlit/divorce/rings.png
+", 
          use_container_width=True)
 
 st.markdown("""
