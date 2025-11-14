@@ -37,8 +37,8 @@ st.markdown(
         font-weight:300;
         font-style: italic;
     ">
-        Exploratory Data Analysis<br>
-        Lindsay McFarlane
+        Exploratory Data Analysis
+    </h4>
     </h5>
 
         <h5 style="
