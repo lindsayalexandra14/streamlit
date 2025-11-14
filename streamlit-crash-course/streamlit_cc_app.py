@@ -31,7 +31,7 @@ st.markdown(
     <h4 style="
         text-align:center;
         font-family:'Inter', sans-serif;
-        font-size:18px;
+        font-size:24px;
         color:#666;
         margin-top:0px;
         font-weight:300;
@@ -39,7 +39,19 @@ st.markdown(
     ">
         Exploratory Data Analysis<br>
         Lindsay McFarlane
-    </h4>
+    </h5>
+
+        <h5 style="
+        text-align:center;
+        font-family:'Inter', sans-serif;
+        font-size:18px;
+        color:#666;
+        margin-top:0px;
+        font-weight:300;
+        font-style: italic;
+    ">
+        Lindsay McFarlane
+    </h5>
     """,
     unsafe_allow_html=True
 )
