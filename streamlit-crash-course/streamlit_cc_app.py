@@ -309,7 +309,7 @@ def make_correlation_heatmap(
         fontsize=10,
         color='black',
         wrap=True,
-        horizontalalignment='left',
+        horizontalalignment='center',
         bbox=dict(facecolor='lightgray', alpha=0.5,
                   edgecolor='gray', boxstyle='round,pad=0.5')
     )
@@ -425,7 +425,7 @@ def make_chi2_plot(
         fontsize=10,
         color='black',
         wrap=True,
-        horizontalalignment='left',
+        horizontalalignment='center',
         bbox=dict(facecolor='lightgray', alpha=0.5, edgecolor='gray', boxstyle='round,pad=0.5')
     )
 
