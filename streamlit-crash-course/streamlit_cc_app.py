@@ -256,7 +256,7 @@ def make_pairplot(
     # Update traces
     fig.update_traces(
         diagonal_visible=False,
-        marker=dict(size=5, opacity=0.7, color='darkgrey')
+        marker=dict(size=5, opacity=0.7, color='black')
     )
 
     # Layout & margin
