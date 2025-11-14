@@ -303,7 +303,7 @@ def make_correlation_heatmap(
     plt.tight_layout()
         # Caption
     plt.figtext(
-        0.52, -0.30,          # x = 0.5 centers horizontally
+        0.52, -0.35,          # x = 0.5 centers horizontally
         caption_text,
         fontsize=10,
         color='black',
