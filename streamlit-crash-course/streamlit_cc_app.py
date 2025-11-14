@@ -16,11 +16,14 @@ import streamlit as st
 
 st.markdown(
     """
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
     <h1 style='
         text-align: center;
         color: #333;
         margin-top: -20px;
-        font-size: 42px;
+        font-size: 50px;
+        font-family: "Dancing Script", cursive;
     '>
         Divorced Couples EDA
     </h1>
