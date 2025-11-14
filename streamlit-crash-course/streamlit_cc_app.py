@@ -31,7 +31,7 @@ st.markdown(
     <h4 style="
         text-align:center;
         font-family:'Inter', sans-serif;
-        font-size:24px;
+        font-size:22px;
         color:#666;
         margin-top:0px;
         font-weight:300;
