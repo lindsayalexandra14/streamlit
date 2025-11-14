@@ -239,9 +239,11 @@ def make_pairplot(
         borderwidth=1
     )
 
-    for i in range(len(pairplot_columns)):
-        fig.update_xaxes(tickangle=45, row=1, col=i+1)  # Rotate x-axis ticks
-        fig.update_yaxes(tickangle=0, row=i+1, col=1)   # Rotate y-axis ticks if needed
+    for key, axis in fig.layout.items():
+        if key.startswith("xaxis"):
+            axis.tickangle = 45  # rotate x-axis labels
+        if key.startswith("yaxis"):
+            axis.tickangle = 0   # rotate y-axis labels if needed
 
     return fig
 
