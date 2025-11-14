@@ -150,7 +150,7 @@ def plot_bars(df, col, custom_palette, sort_by='percentage', title="Title TBD", 
 
     return fig;
 
-def plot_histogram(df, x, nbins, xaxis_title, text):
+def plot_histogram(df, x, nbins, xaxis_title):
     fig = px.histogram(
         df, 
         x=x, 
@@ -276,8 +276,7 @@ sns.palplot(heatmap_palette)
 def make_correlation_heatmap(
     df,
     heatmap_palette="coolwarm",
-    fig_title="Correlation Heatmap",
-    caption_text=None,
+    fig_title="Correlation Heatmap"
     figsize=(7, 5)
 ):
     # # Default caption
@@ -362,8 +361,7 @@ chi_squared_df = pd.DataFrame(results).sort_values('p_value').reset_index(drop=T
 
 def make_chi2_plot(
     chi_squared_df,
-    fig_title="Chi-Squared Statistics for Column Pairs",
-    caption_text=None
+    fig_title="Chi-Squared Statistics for Column Pairs"
 ):
     # # Default caption text
     # if caption_text is None:
