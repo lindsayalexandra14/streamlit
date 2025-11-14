@@ -393,7 +393,7 @@ chi_squared_df = pd.DataFrame(results).sort_values('p_value').reset_index(drop=T
 
 def make_chi2_plot(
     chi_squared_df,
-    fig_title="Chi-Squared Statistics for Column Pairs"
+    fig_title="Chi-Squared Tests"
 ):
     # # Default caption text
     # if caption_text is None:
