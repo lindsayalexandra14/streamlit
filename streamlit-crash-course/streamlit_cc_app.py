@@ -21,7 +21,6 @@ st.markdown(
         color: #333;
         margin-top: -20px;
         font-size: 42px;
-        font-weight: 600;
     '>
         Divorced Couples EDA
     </h1>
