@@ -337,7 +337,7 @@ def make_correlation_heatmap(
     "Correlation Heatmap",
     ha="center",
     va="center",
-    fontsize=12,          # small but bold like Plotly
+    fontsize=10,          # small but bold like Plotly
     fontweight="bold",
 )
 
