@@ -134,19 +134,19 @@ def plot_bars(df, col, custom_palette, sort_by='percentage', title="Title TBD", 
                       "Percentage: %{y:.1f}%"
     )
 
-    fig.add_annotation(
-    text=caption,
-    xref="paper", yref="paper",
-    x=0, y=-0.22,
-    showarrow=False,
-    font=dict(size=14, color="black"),
-    xanchor='left', yanchor='top',
-    align="left",
-    bgcolor="rgba(211, 211, 211, 0.5)",
-    bordercolor="gray",
-    borderpad=6,
-    borderwidth=1
-)
+#     fig.add_annotation(
+#     # text=caption,
+#     xref="paper", yref="paper",
+#     x=0, y=-0.22,
+#     showarrow=False,
+#     font=dict(size=14, color="black"),
+#     xanchor='left', yanchor='top',
+#     align="left",
+#     bgcolor="rgba(211, 211, 211, 0.5)",
+#     bordercolor="gray",
+#     borderpad=6,
+#     borderwidth=1
+# )
 
     return fig;
 
@@ -170,22 +170,22 @@ def plot_histogram(df, x, nbins, xaxis_title, text):
 
     fig.update_xaxes(automargin=True)
 
-    fig.add_annotation(
-        text=text,
-        xref="paper",
-        yref="paper",
-        x=0,
-        y=-0.24,
-        showarrow=False,
-        font=dict(size=14, color="black"),
-        xanchor='left',
-        yanchor='top',
-        align="left",
-        bgcolor="rgba(211, 211, 211, 0.5)",
-        bordercolor="gray",
-        borderpad=6,
-        borderwidth=1
-    )  
+    # fig.add_annotation(
+    #     text=text,
+    #     xref="paper",
+    #     yref="paper",
+    #     x=0,
+    #     y=-0.24,
+    #     showarrow=False,
+    #     font=dict(size=14, color="black"),
+    #     xanchor='left',
+    #     yanchor='top',
+    #     align="left",
+    #     bgcolor="rgba(211, 211, 211, 0.5)",
+    #     bordercolor="gray",
+    #     borderpad=6,
+    #     borderwidth=1
+    # )  
 
     return fig
 
@@ -232,34 +232,34 @@ def make_pairplot(
     # Layout & margin
     fig.update_layout(margin=dict(b=250))
 
-    # Add annotations
-    fig.add_annotation(
-        text=annotation1,
-        xref="paper", yref="paper",
-        x=0, y=-0.11,
-        showarrow=False,
-        font=dict(size=17, color="black"),
-        xanchor='left', yanchor='top',
-        align="left",
-        bgcolor="rgba(211, 211, 211, 0.5)",
-        bordercolor="gray",
-        borderpad=6,
-        borderwidth=1
-    )
+    # # Add annotations
+    # fig.add_annotation(
+    #     text=annotation1,
+    #     xref="paper", yref="paper",
+    #     x=0, y=-0.11,
+    #     showarrow=False,
+    #     font=dict(size=17, color="black"),
+    #     xanchor='left', yanchor='top',
+    #     align="left",
+    #     bgcolor="rgba(211, 211, 211, 0.5)",
+    #     bordercolor="gray",
+    #     borderpad=6,
+    #     borderwidth=1
+    # )
 
-    fig.add_annotation(
-        text=annotation2,
-        xref="paper", yref="paper",
-        x=0, y=-0.20,
-        showarrow=False,
-        font=dict(size=17, color="black"),
-        xanchor='left', yanchor='top',
-        align="left",
-        bgcolor="rgba(211, 211, 211, 0.5)",
-        bordercolor="gray",
-        borderpad=6,
-        borderwidth=1
-    )
+    # fig.add_annotation(
+    #     text=annotation2,
+    #     xref="paper", yref="paper",
+    #     x=0, y=-0.20,
+    #     showarrow=False,
+    #     font=dict(size=17, color="black"),
+    #     xanchor='left', yanchor='top',
+    #     align="left",
+    #     bgcolor="rgba(211, 211, 211, 0.5)",
+    #     bordercolor="gray",
+    #     borderpad=6,
+    #     borderwidth=1
+    # )
 
     return fig
 
@@ -280,20 +280,20 @@ def make_correlation_heatmap(
     caption_text=None,
     figsize=(7, 5)
 ):
-    # Default caption
-    if caption_text is None:
-        caption_text = (
-            "The heatmap shows the correlations between all the numerical variables:\n"
-            "\n"
-            "Strong positive correlations:\n"
-            "• Income (Man) & Income (Woman)\n"
-            "• Number of Kids & Marriage Duration\n"
-            "• Age Difference & Years Woman Older\n\n"
-            "Strong negative correlations:\n"
-            "• Marriage Duration & Marriage Year\n"
-            "• Number of Kids & Marriage Year and Decade\n"
-            "• Age Difference & Years Man Older"
-        )
+    # # Default caption
+    # if caption_text is None:
+    #     caption_text = (
+    #         "The heatmap shows the correlations between all the numerical variables:\n"
+    #         "\n"
+    #         "Strong positive correlations:\n"
+    #         "• Income (Man) & Income (Woman)\n"
+    #         "• Number of Kids & Marriage Duration\n"
+    #         "• Age Difference & Years Woman Older\n\n"
+    #         "Strong negative correlations:\n"
+    #         "• Marriage Duration & Marriage Year\n"
+    #         "• Number of Kids & Marriage Year and Decade\n"
+    #         "• Age Difference & Years Man Older"
+    #     )
 
     # Create figure
     fig = plt.figure(figsize=figsize)
@@ -321,16 +321,16 @@ def make_correlation_heatmap(
     plt.yticks(rotation=0)
     plt.tight_layout()
         # Caption
-    plt.figtext(
-        0.52, -0.35,          # x = 0.5 centers horizontally
-        caption_text,
-        fontsize=10,
-        color='black',
-        wrap=True,
-        horizontalalignment='center',
-        bbox=dict(facecolor='lightgray', alpha=0.5,
-                edgecolor='gray')
-    )
+    # plt.figtext(
+    #     0.52, -0.35,          # x = 0.5 centers horizontally
+    #     caption_text,
+    #     fontsize=10,
+    #     color='black',
+    #     wrap=True,
+    #     horizontalalignment='center',
+    #     bbox=dict(facecolor='lightgray', alpha=0.5,
+    #             edgecolor='gray')
+    # )
 
     return fig
 
@@ -365,15 +365,15 @@ def make_chi2_plot(
     fig_title="Chi-Squared Statistics for Column Pairs",
     caption_text=None
 ):
-    # Default caption text
-    if caption_text is None:
-        caption_text = (
-            "Chi-Squared test pairs the categorical variables to see if a significant relationship exists:\n"
-            "(Note, number of kids has been used as numerical & categorical given its few unique values)\n"
-            "\n"
-            "• Highest signficance in relationship between Income (Man) & Income (Woman)\n"
-            "• All other relationships significant except for Education (Man) & Number of Kids"
-        )
+    # # Default caption text
+    # if caption_text is None:
+    #     caption_text = (
+    #         "Chi-Squared test pairs the categorical variables to see if a significant relationship exists:\n"
+    #         "(Note, number of kids has been used as numerical & categorical given its few unique values)\n"
+    #         "\n"
+    #         "• Highest signficance in relationship between Income (Man) & Income (Woman)\n"
+    #         "• All other relationships significant except for Education (Man) & Number of Kids"
+    #     )
 
     # Create label pair column
     chi_squared_df = chi_squared_df.copy()
@@ -436,17 +436,17 @@ def make_chi2_plot(
     # Expand x-axis
     ax.set_xlim(0, max_chi2 * 1.5)
 
-    # Caption
-    plt.figtext(
-        0.52, -0.25,          # x = 0.5 centers horizontally
-        caption_text,
-        fontsize=10,
-        color='black',
-        wrap=True,
-        horizontalalignment='center',
-        bbox=dict(facecolor='lightgray', alpha=0.5,
-                edgecolor='gray')
-    )
+    # # Caption
+    # plt.figtext(
+    #     0.52, -0.25,          # x = 0.5 centers horizontally
+    #     caption_text,
+    #     fontsize=10,
+    #     color='black',
+    #     wrap=True,
+    #     horizontalalignment='center',
+    #     bbox=dict(facecolor='lightgray', alpha=0.5,
+    #             edgecolor='gray')
+    # )
 
     # Final touches
     plt.title(fig_title, fontsize=14)
