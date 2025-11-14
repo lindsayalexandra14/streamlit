@@ -91,7 +91,7 @@ custom_palette = [
 ]
 
 st.image("https://github.com/lindsayalexandra14/ds_portfolio/raw/main/portfolio/1_projects/data_visualization/streamlit/divorce/rings.png", 
-         use_column_width=True)
+         use_container_width=True)
 
 st.markdown("""
 <style>
