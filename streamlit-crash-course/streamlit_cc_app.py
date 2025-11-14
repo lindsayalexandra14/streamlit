@@ -104,7 +104,7 @@ st.markdown("""
 
 /* NEW large header-style caption */
 .headers {
-    background: #af876c;
+    background: #dfc5af;
     padding: 12px 18px;
     border-radius: 10px;
     border: 1px solid #ccc;
