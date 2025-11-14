@@ -380,6 +380,7 @@ def make_chi2_plot(
     )
 
     fig.patch.set_alpha(0)
+    ax.set_facecolor("none")
     # Annotate bars
     max_chi2 = chi_squared_df['chi2_stat'].max()
 
