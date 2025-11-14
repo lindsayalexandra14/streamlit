@@ -740,10 +740,9 @@ vif_data["VIF (variance inflation factor)"] = [variance_inflation_factor(X_data.
 
 st.dataframe(vif_data)
 
-tight_caption("The linear regression model shows an Adjusted R^2 of 0.608 which is strong, <br>" \
-"especially given the small # of variables in the model. This means <br>" \
-"that the variables in the model are able to explain 60.8% of the variance<br> "
-"in marriage duration."
+tight_caption("The linear regression model shows an Adjusted R^2 of 0.608 which is strong, especially given the <br>" \
+"small # of variables in the model. This means that the variables in the model<br>" \
+"are able to explain 60.8% of the variance in marriage duration.<br> "
 "<br>"
 "The number of kids and the marriage decade are significant, <br>" \
 "with number of kids having a positive relationship (coefficient: 1.66) <br>"
