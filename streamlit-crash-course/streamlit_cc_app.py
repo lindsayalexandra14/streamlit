@@ -675,90 +675,71 @@ st.markdown("<br>", unsafe_allow_html=True)  # two blank lines
 
 headers("Linear Regression")
 
-# st.markdown(
-#     """
-#     <div style="
-#         background-color: rgba(211, 211, 211, 0.5);
-#         padding: 12px 18px;
-#         border-radius: 12px;
-#         border: 1px solid gray;
-#         font-size: 14px;
-#         line-height: 1.4;
-#         margin-top: 10px;
-#     ">
-#         <strong>Correlation Insight:</strong><br>
-#         Marriage year has a strong negative correlation with marriage duration.
-#     </div>
-#     """,
-#     unsafe_allow_html=True
-# )
+# # dummy variables for marriage decade (since it is now categorical)
+# df_encoded = pd.get_dummies(df, columns=['marriage_decade'], drop_first=True)
 
+# X_data = df[['age_diff','income_diff','num_kids','marriage_decade']].astype(float)
 
+# y_target = df['marriage_dur'].astype(float)
 
-# dummy variables for marriage decade (since it is now categorical)
+# x_train, x_test, y_train, y_test = holdout(X_data, y_target, test_size=0.2, random_state=0)
+
+# regression = LinearRegression()
+# regression.fit(x_train, y_train)
+
+# predictions = regression.predict(x_test)
+
+# rmse = np.sqrt(mean_squared_error(y_test, predictions))
+
+# print(rmse)
+
+# x_train_const = sm.add_constant(x_train)
+# model = sm.OLS(y_train, x_train_const).fit()
+# print(model.summary())
+
+# vif_data = pd.DataFrame()
+# vif_data["feature"] = X_data.columns
+# vif_data["VIF"] = [variance_inflation_factor(X_data.values, i) for i in range(X_data.shape[1])]
+
+# print(vif_data)
+
+import streamlit as st
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split as holdout
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+import statsmodels.api as sm
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+
+# --- Prepare data ---
 df_encoded = pd.get_dummies(df, columns=['marriage_decade'], drop_first=True)
 
 X_data = df[['age_diff','income_diff','num_kids','marriage_decade']].astype(float)
-
 y_target = df['marriage_dur'].astype(float)
 
 x_train, x_test, y_train, y_test = holdout(X_data, y_target, test_size=0.2, random_state=0)
 
+# --- Linear Regression ---
 regression = LinearRegression()
 regression.fit(x_train, y_train)
-
 predictions = regression.predict(x_test)
-
 rmse = np.sqrt(mean_squared_error(y_test, predictions))
 
-print(rmse)
+st.subheader("Regression Results")
+st.write(f"**RMSE:** {rmse:.2f}")
 
+# --- OLS summary ---
 x_train_const = sm.add_constant(x_train)
 model = sm.OLS(y_train, x_train_const).fit()
-print(model.summary())
 
+st.subheader("OLS Summary")
+st.text(model.summary())
+
+# --- VIF calculation ---
 vif_data = pd.DataFrame()
 vif_data["feature"] = X_data.columns
 vif_data["VIF"] = [variance_inflation_factor(X_data.values, i) for i in range(X_data.shape[1])]
 
-print(vif_data)
-
-# with st.container():
-#     st.write("This is inside the container")
-#     fig1 = plot_bars(df, "num_kids", custom_palette, title="Number of Kids", caption="Most of the (divorced) couples had 0 kids (39%) followed by<br>having 1 or 2 kids.")
-#     # # # Create figure with specific size
-#     # fig3 = px.scatter(df, x="income_man", y="income_woman", color="num_kids")
-#     # fig3.update_layout(width=800, height=500)  # width & height in pixels
-#     fig2 = plot_bars(df,"education_man", custom_palette, title='Education (Man)', caption="Most of the men had a Professional-level education (higher <br>education, post-college) at 57%.")
-
-#     # # Show in Streamlit
-#     fig3 = plot_bars(df,"education_woman", custom_palette, title='Education (Woman)', caption="The women had an even higher makeup of Professional-level education<br>(higher education, post-college) at 62%.")
-#     fig4 = plot_bars(df,"marriage_decade", custom_palette, title='Marriage Decade', caption="Over 75% of the couples were married in the '90s or '00s.")
-#     fig5 = plot_bars(df,"marriage_year", custom_palette, title='Marriage Year', sort_by="category", caption="The highest percentage of couples were married in 1998 (5.5%).")
-#     fig6 = plot_bars(df,"divorce_year", custom_palette, sort_by="category", title='Divorce Year', caption='The highest number of divorces among the couples occurred in <br>2011 (9.8%), with an overall peak between 2008-2011.')
-      
-#     st.plotly_chart(fig1)
-#     st.plotly_chart(fig2)
-#     st.plotly_chart(fig3)
-#     st.plotly_chart(fig4)
-#     st.plotly_chart(fig5)
-#     st.plotly_chart(fig6)
-
-# st.write("This is outside the container")
-
-# row1 = st.columns(3)
-# row2 = st.columns(3)
-
-# figs = [fig1, fig2, fig3, fig4, fig5, fig6]  # Your charts
-# rows = [row1, row2]
-
-# fig_index = 0s
-# for r in rows:
-#     for col in r:
-#         if fig_index < len(figs):
-#             with col:
-#                 st.subheader(f"Chart {fig_index+1}")  # optional title
-#                 figs[fig_index].update_layout(height=300)
-
-#                 st.plotly_chart(figs[fig_index], use_container_width=True, key=f"chart{fig_index}")
-#             fig_index += 1
+st.subheader("Variance Inflation Factor (VIF)")
+st.dataframe(vif_data)
