@@ -63,7 +63,6 @@ st.markdown("""
 <style>
 .caption-block p {
     margin-top: -10px !important;   /* pull caption upward */
-    margin-bottom: 5px !important;  /* tighten spacing below */
     padding: 8px 12px;
     background: rgba(200,200,200,0.35);
     border: 1px solid #aaa;
