@@ -637,28 +637,23 @@ pairplot_caption2 = (
             "<br>of the woman; if the income of the man is high or low, so is that of the woman")
 
 corrplot_caption = (
-            "The heatmap shows the correlations between all the numerical variables:\n"
-            "\n"
-            "Strong positive correlations:"
-            "\n"
-            "• Income (Man) & Income (Woman)"
-            "\n"
-            "• Number of Kids & Marriage Duration"
-            "\n"
-            "• Age Difference & Years Woman Older"
-            "\n"
-            "\n"
-            "Strong negative correlations:"
-            "\n"
-            "• Marriage Duration & Marriage Year"
-            "\n"
-            "• Number of Kids & Marriage Year and Decade"
-            "\n"
-            "• Age Difference & Years Man Older"
-        )
+    "The heatmap shows the correlations between all the numerical variables:<br><br>"
+    "Strong positive correlations:<br>"
+    "• Income (Man) & Income (Woman)<br>"
+    "• Number of Kids & Marriage Duration<br>"
+    "• Age Difference & Years Woman Older<br><br>"
+    "Strong negative correlations:<br>"
+    "• Marriage Duration & Marriage Year<br>"
+    "• Number of Kids & Marriage Year and Decade<br>"
+    "• Age Difference & Years Man Older"
+)
+
+st.markdown(corrplot_caption, unsafe_allow_html=True)
+
 chi_caption = (
             "Chi-Squared test pairs the categorical variables to see if a significant relationship exists:\n"
             "(Note, number of kids has been used as numerical & categorical given its few unique values)\n"
+            "\n"
             "\n"
             "• Highest signficance in relationship between Income (Man) & Income (Woman)\n"
             "\n"
