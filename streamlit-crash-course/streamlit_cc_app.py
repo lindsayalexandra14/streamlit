@@ -30,7 +30,7 @@ st.markdown(
 
     <h4 style="
         text-align:center;
-        font-family:'Inter', sans-serif;
+        font-family:'Dancing Script', cursive;
         font-size:24px;
         color:#666;
         margin-top:0px;
