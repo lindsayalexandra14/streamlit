@@ -186,13 +186,13 @@ def make_pairplot(
     if annotation1 is None:
         annotation1 = (
             "There is a strong negative correlation between marriage year and marriage duration, "
-            "showing that the more recent the year the couples were<br> married, the shorter the "
+            "showing that the more recent the year the <br> couples were married, the shorter the "
             "marriage duration."
         )
     if annotation2 is None:
         annotation2 = (
             "There is a strong positive correlation between the income of the man and the income "
-            "of the woman (e.g., if the income of the man is high or <br>low, so is that of the woman)"
+            "of the woman (e.g., if the income of the<br>man is high or low, so is that of the woman)"
         )
 
     # Create scatter matrix
@@ -231,7 +231,7 @@ def make_pairplot(
     fig.add_annotation(
         text=annotation2,
         xref="paper", yref="paper",
-        x=0, y=-0.17,
+        x=0, y=-0.20,
         showarrow=False,
         font=dict(size=17, color="black"),
         xanchor='left', yanchor='top',
