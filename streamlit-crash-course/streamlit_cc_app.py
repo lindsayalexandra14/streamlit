@@ -276,7 +276,7 @@ sns.palplot(heatmap_palette)
 def make_correlation_heatmap(
     df,
     heatmap_palette="coolwarm",
-    fig_title="Correlation Heatmap"
+    fig_title="Correlation Heatmap",
     figsize=(7, 5)
 ):
     # # Default caption
