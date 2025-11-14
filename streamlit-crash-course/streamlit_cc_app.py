@@ -99,6 +99,8 @@ st.markdown("""
     border: 1px solid #aaa;
     border-radius: 12px;
     font-size: 0.9rem;
+    color: black;
+    margin-top: 8px;
 }
 
 /* NEW large header-style caption */
@@ -666,7 +668,7 @@ headers("Scatterplots")
 st.plotly_chart(fig12, use_container_width=True)
 tight_caption(pairplot_caption1)  # pairplot
 tight_caption(pairplot_caption2) 
-headers("Correlation Heatmap")
+headers("Heatmap")
 st.pyplot(fig13)  # correlation heatmap
 tight_caption(corrplot_caption)
 headers("Chi-squared Tests")
