@@ -14,7 +14,15 @@ from statsmodels.stats.outliers_influence import variance_inflation_factor
 from statsmodels.tools.tools import add_constant
 import streamlit as st
 
-st.title("Python EDA: Divorce Data")
+st.markdown(
+    """
+    <h1 style='text-align: center; color:#333; margin-top:-20px;'>
+        Divorce EDA
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
+
 
 df = pd.read_csv("divorce.csv")
 
