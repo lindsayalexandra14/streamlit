@@ -510,7 +510,7 @@ fig9 = plot_histogram(df,"inc_woman",15,"Income (Woman)")
 fig10 = plot_histogram(df,"age_diff",10,"Age Difference")
 fig11 = plot_histogram(df,"years_woman_older",20,"Years Woman Older")
 
-fig12 = make_pairplot(df, pairplot_columns, fig_title="My Pairplot")
+fig12 = make_pairplot(df, pairplot_columns)
 
 fig13 = make_correlation_heatmap(df, heatmap_palette=heatmap_palette)
 
