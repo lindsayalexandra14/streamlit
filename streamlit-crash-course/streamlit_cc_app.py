@@ -183,7 +183,7 @@ def plot_histogram(df, x, nbins, xaxis_title):
         yaxis_title="Count",
         width=600,
         height=400,
-        margin=dict(b=115)
+        margin=dict(t=40, b=10, l=10, r=10)
     )
 
     fig.update_xaxes(automargin=True)
@@ -248,7 +248,7 @@ def make_pairplot(
     )
 
     # Layout & margin
-    fig.update_layout(margin=dict(b=250))
+    fig.update_layout(margin=dict(t=40, b=10, l=10, r=10))
 
     # # Add annotations
     # fig.add_annotation(
