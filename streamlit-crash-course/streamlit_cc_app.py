@@ -200,7 +200,7 @@ def make_pairplot(
             "There is a strong positive correlation between the income of the man and the income "
             "of the woman (e.g., if the income of the man is high or <br>low, so is that of the woman)"
         )
-    
+
     # Mapping for short column names
     short_names = {
         'num_kids': 'Kids',
@@ -211,17 +211,17 @@ def make_pairplot(
         'income_difference': 'Income Diff',
         'marriage_year': 'Year'
     }
-    
+
     # Create temporary DataFrame with renamed columns
     df_temp = df[pairplot_columns].rename(columns=short_names)
-    
+
     # Use renamed columns as dimensions
-    dimensions = [short_names[col] for col in pairplot_columns]
+    dimensions = list(df_temp.columns)
 
     # Create scatter matrix
     fig = px.scatter_matrix(
         df_temp,
-        dimensions=dimensions,
+        dimensions=dimensions,  # <- must match df_temp columns
         title=fig_title,
         height=1200,
         width=1200
@@ -265,12 +265,13 @@ def make_pairplot(
         borderwidth=1
     )
 
-    # Rotate x-axis tick labels
+    # Rotate x-axis tick labels for all subplots
     for i in range(1, len(dimensions)**2 + 1):
         xaxis_name = f"xaxis{i}" if i > 1 else "xaxis"
         fig.layout[xaxis_name].tickangle = 45
 
     return fig
+
 
 
 heatmap_palette = sns.diverging_palette(
