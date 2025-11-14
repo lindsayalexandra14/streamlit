@@ -16,8 +16,15 @@ import streamlit as st
 
 st.markdown(
     """
-    <h1 style='text-align: center; color:#333; margin-top:-20px;'>
-        Divorce EDA
+    <h1 style='
+        text-align: center;
+        color: #333;
+        margin-top: -20px;
+        font-size: 42px;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        font-weight: 600;
+    '>
+        Divorced Couples EDA
     </h1>
     """,
     unsafe_allow_html=True
