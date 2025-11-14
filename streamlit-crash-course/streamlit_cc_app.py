@@ -605,6 +605,7 @@ for tab, fig, caption in zip(
     with tab:
         st.plotly_chart(fig, use_container_width=True)
         tight_caption(caption)
+st.markdown("<br><br>", unsafe_allow_html=True)  # two blank lines
 
 headers("Histograms")
 
@@ -664,16 +665,23 @@ chi_caption = (
             "• All other relationships significant except for Education (Man) & Number of Kids"
         )
 # Remaining figures
+st.markdown("<br><br>", unsafe_allow_html=True)  # two blank lines
 headers("Scatterplots")
 st.plotly_chart(fig12, use_container_width=True)
 tight_caption(pairplot_caption1)  # pairplot
 tight_caption(pairplot_caption2) 
+st.markdown("<br><br>", unsafe_allow_html=True)  # two blank lines
+
 headers("Heatmap")
 st.pyplot(fig13)  # correlation heatmap
 tight_caption(corrplot_caption)
+st.markdown("<br><br>", unsafe_allow_html=True)  # two blank lines
+
 headers("Chi-squared Tests")
 st.pyplot(fig14)  # chi2 plot
 tight_caption(chi_caption)
+st.markdown("<br><br>", unsafe_allow_html=True)  # two blank lines
+
 
 headers("Linear Regression")
 
