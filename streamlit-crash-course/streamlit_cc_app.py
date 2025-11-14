@@ -457,20 +457,31 @@ def make_chi2_plot(
 
     return fig
 
-fig1 = plot_bars(df, "num_kids", custom_palette, title="Number of Kids", caption="Most of the (divorced) couples had 0 kids (39%) followed by<br>having 1 or 2 kids.")
-fig2 = plot_bars(df,"education_man", custom_palette, title='Education (Man)', caption="Most of the men had a Professional-level education (higher <br>education, post-college) at 57%.")
+# fig1 = plot_bars(df, "num_kids", custom_palette, title="Number of Kids", caption="Most of the (divorced) couples had 0 kids (39%) followed by<br>having 1 or 2 kids.")
+# fig2 = plot_bars(df,"education_man", custom_palette, title='Education (Man)', caption="Most of the men had a Professional-level education (higher <br>education, post-college) at 57%.")
+# fig3 = plot_bars(df,"education_woman", custom_palette, title='Education (Woman)', caption="The women had an even higher makeup of Professional-level education<br>(higher education, post-college) at 62%.")
+# fig4 = plot_bars(df,"marriage_decade", custom_palette, title='Marriage Decade', caption="Over 75% of the couples were married in the '90s or '00s.")
+# fig5 = plot_bars(df,"marriage_yr", custom_palette, title='Marriage Year', sort_by="category", caption="The highest percentage of couples were married in 1998 (5.5%).")
+# fig6 = plot_bars(df,"divorce_year", custom_palette, sort_by="category", title='Divorce Year', caption='The highest number of divorces among the couples occurred in <br>2011 (9.8%), with an overall peak between 2008-2011.')
 
+# fig7 = plot_histogram(df,"marriage_dur",20,"Marriage Duration",text="The median marriage duration is 8 years. The heaviest<br>concentration is between 2-5 years and the max is 33 years.")
+# fig8 = plot_histogram(df,"inc_man",15,"Income (Man)",text="The median monthly income for the men was 5,000 dollars <br>with an IQR of 3,200-8,200 dollars and a max of ~19k.")
+# fig9 = plot_histogram(df,"inc_woman",15,"Income (Woman)",text="The median monthly income for the women was also 5,000 dollars <br>with a bit lower Q3 (7,500 dollars) and max (~15k).")
+# fig10 = plot_histogram(df,"age_diff",10,"Age Difference",text="The median age difference of the couple was 2 years, with<br>most ranging from 1-4 years")
+# fig11 = plot_histogram(df,"years_woman_older",20,"Years Woman Older",text="The median number of years older of the woman was 1,<br> showing that in most divorced couples the woman was older.")
 
-fig3 = plot_bars(df,"education_woman", custom_palette, title='Education (Woman)', caption="The women had an even higher makeup of Professional-level education<br>(higher education, post-college) at 62%.")
-fig4 = plot_bars(df,"marriage_decade", custom_palette, title='Marriage Decade', caption="Over 75% of the couples were married in the '90s or '00s.")
-fig5 = plot_bars(df,"marriage_yr", custom_palette, title='Marriage Year', sort_by="category", caption="The highest percentage of couples were married in 1998 (5.5%).")
-fig6 = plot_bars(df,"divorce_year", custom_palette, sort_by="category", title='Divorce Year', caption='The highest number of divorces among the couples occurred in <br>2011 (9.8%), with an overall peak between 2008-2011.')
+fig1 = plot_bars(df, "num_kids", custom_palette, title="Number of Kids")
+fig2 = plot_bars(df,"education_man", custom_palette, title='Education (Man)')
+fig3 = plot_bars(df,"education_woman", custom_palette, title='Education (Woman)')
+fig4 = plot_bars(df,"marriage_decade", custom_palette, title='Marriage Decade')
+fig5 = plot_bars(df,"marriage_yr", custom_palette, title='Marriage Year', sort_by="category")
+fig6 = plot_bars(df,"divorce_year", custom_palette, sort_by="category", title='Divorce Year')
 
-fig7 = plot_histogram(df,"marriage_dur",20,"Marriage Duration",text="The median marriage duration is 8 years. The heaviest<br>concentration is between 2-5 years and the max is 33 years.")
-fig8 = plot_histogram(df,"inc_man",15,"Income (Man)",text="The median monthly income for the men was 5,000 dollars <br>with an IQR of 3,200-8,200 dollars and a max of ~19k.")
-fig9 = plot_histogram(df,"inc_woman",15,"Income (Woman)",text="The median monthly income for the women was also 5,000 dollars <br>with a bit lower Q3 (7,500 dollars) and max (~15k).")
-fig10 = plot_histogram(df,"age_diff",10,"Age Difference",text="The median age difference of the couple was 2 years, with<br>most ranging from 1-4 years")
-fig11 = plot_histogram(df,"years_woman_older",20,"Years Woman Older",text="The median number of years older of the woman was 1,<br> showing that in most divorced couples the woman was older.")
+fig7 = plot_histogram(df,"marriage_dur",20,"Marriage Duration")
+fig8 = plot_histogram(df,"inc_man",15,"Income (Man)")
+fig9 = plot_histogram(df,"inc_woman",15,"Income (Woman)")
+fig10 = plot_histogram(df,"age_diff",10,"Age Difference")
+fig11 = plot_histogram(df,"years_woman_older",20,"Years Woman Older")
 
 fig12 = make_pairplot(df, pairplot_columns, fig_title="My Pairplot")
 
