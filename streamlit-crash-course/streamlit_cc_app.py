@@ -332,6 +332,16 @@ def make_correlation_heatmap(
         # Make background transparent
     fig.patch.set_alpha(0)
 
+    plt.figtext(
+    0.5,      # centered horizontally
+    0.97,     # slightly above the plot
+    "Correlation Heatmap",
+    ha="center",
+    va="center",
+    fontsize=14,          # small but bold like Plotly
+    fontweight="bold",
+)
+
     # Draw heatmap
     sns.heatmap(
         df.corr(numeric_only=True),
@@ -350,7 +360,8 @@ def make_correlation_heatmap(
     plt.title(fig_title, fontsize=16)
     plt.xticks(rotation=45, ha='right')
     plt.yticks(rotation=0)
-    plt.tight_layout()
+    plt.tight_layout(rect=[0, 0, 1, 0.95])  # leave space for your custom title
+
         # Caption
     # plt.figtext(
     #     0.52, -0.35,          # x = 0.5 centers horizontally
