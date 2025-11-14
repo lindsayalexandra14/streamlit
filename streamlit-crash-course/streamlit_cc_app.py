@@ -737,7 +737,6 @@ st.text(model.summary())
 # --- VIF calculation ---
 vif_data = pd.DataFrame()
 vif_data["feature"] = X_data.columns
-vif_data["VIF"] = [variance_inflation_factor(X_data.values, i) for i in range(X_data.shape[1])]
+vif_data["VIF (variance inflation factor)"] = [variance_inflation_factor(X_data.values, i) for i in range(X_data.shape[1])]
 
-st.subheader("Variance Inflation Factor (VIF)")
 st.dataframe(vif_data)
