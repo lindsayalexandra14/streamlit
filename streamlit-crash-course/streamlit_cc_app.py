@@ -225,7 +225,7 @@ def make_pairplot(
         bgcolor="rgba(211, 211, 211, 0.5)",
         bordercolor="gray",
         borderpad=6,
-        borderwidth=1
+        borderwidth=1, boxstyle='round,pad=0.5'
     )
 
     fig.add_annotation(
@@ -310,7 +310,7 @@ def make_correlation_heatmap(
         wrap=True,
         horizontalalignment='center',
         bbox=dict(facecolor='lightgray', alpha=0.5,
-                edgecolor='gray')
+                edgecolor='gray',boxstyle='round,pad=0.5')
     )
 
     return fig
