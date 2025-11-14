@@ -182,13 +182,13 @@ short_names = {
 }
 
 def make_pairplot(
-    df_temp,
+    df,
     pairplot_columns,
     fig_title="Pairplot",
     annotation1=None,
     annotation2=None
 ):
-    # Default annotations (if none are provided)
+    # Default annotations
     if annotation1 is None:
         annotation1 = (
             "There is a strong negative correlation between marriage year and marriage duration, "
@@ -201,13 +201,27 @@ def make_pairplot(
             "of the woman (e.g., if the income of the man is high or <br>low, so is that of the woman)"
         )
     
+    # Mapping for short column names
+    short_names = {
+        'num_kids': 'Kids',
+        'marriage_duration': 'Duration',
+        'income_man': 'Income M',
+        'income_woman': 'Income W',
+        'age_difference': 'Age Diff',
+        'income_difference': 'Income Diff',
+        'marriage_year': 'Year'
+    }
+    
+    # Create temporary DataFrame with renamed columns
     df_temp = df[pairplot_columns].rename(columns=short_names)
+    
+    # Use renamed columns as dimensions
+    dimensions = [short_names[col] for col in pairplot_columns]
 
-
-    #Create scatter matrix
+    # Create scatter matrix
     fig = px.scatter_matrix(
         df_temp,
-        dimensions=pairplot_columns,
+        dimensions=dimensions,
         title=fig_title,
         height=1200,
         width=1200
@@ -251,7 +265,13 @@ def make_pairplot(
         borderwidth=1
     )
 
+    # Rotate x-axis tick labels
+    for i in range(1, len(dimensions)**2 + 1):
+        xaxis_name = f"xaxis{i}" if i > 1 else "xaxis"
+        fig.layout[xaxis_name].tickangle = 45
+
     return fig
+
 
 heatmap_palette = sns.diverging_palette(
     3550,  # Hue for end 1
