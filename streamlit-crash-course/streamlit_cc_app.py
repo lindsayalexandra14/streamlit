@@ -90,11 +90,8 @@ custom_palette = [
     '#1bc2bb'
 ]
 
-st.image("""
-    <img src="https://raw.githubusercontent.com/lindsayalexandra14/ds_portfolio/main/1_projects/data_visualization/streamlit/divorce/bridegroom.png"
-         width="150">
-             
-    """)
+st.image("https://raw.githubusercontent.com/lindsayalexandra14/ds_portfolio/main/1_projects/data_visualization/streamlit/divorce/bridegroom.png"
+         width="150")
 
 st.markdown("""
 <style>
