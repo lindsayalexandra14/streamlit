@@ -25,7 +25,7 @@ st.markdown(
         color:#333;
         margin-bottom:2px;
     ">
-        Divorced Couples EDA
+        Divorced Couples
     </h1>
 
     <h4 style="
@@ -36,7 +36,7 @@ st.markdown(
         margin-top:0px;
         font-weight:300;
     ">
-        Understanding demographic patterns and statistical relationships
+        Exploratory Data Analysis
     </h4>
     """,
     unsafe_allow_html=True
