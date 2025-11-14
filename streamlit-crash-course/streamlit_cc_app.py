@@ -95,7 +95,7 @@ st.markdown("""
 /* Existing small caption style */
 .tight_caption {
     padding: 8px 12px;
-    background: #D6CCC7;  
+    background: #DBD4D0;  
     border: 1px solid #aaa; 
     border-radius: 12px; 
     font-size: 0.9rem;
