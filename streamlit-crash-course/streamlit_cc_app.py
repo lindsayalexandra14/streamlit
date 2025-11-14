@@ -240,8 +240,8 @@ def make_pairplot(
     )
 
     for i in range(len(pairplot_columns)):
-    fig.update_xaxes(tickangle=45, row=1, col=i+1)  # Rotate x-axis ticks
-    fig.update_yaxes(tickangle=0, row=i+1, col=1)   # Rotate y-axis ticks if needed
+        fig.update_xaxes(tickangle=45, row=1, col=i+1)  # Rotate x-axis ticks
+        fig.update_yaxes(tickangle=0, row=i+1, col=1)   # Rotate y-axis ticks if needed
 
     return fig
 
