@@ -249,7 +249,7 @@ def make_pairplot(
         df,
         dimensions=pairplot_columns,  # <- must match df_temp columns
         title=fig_title,
-        height=800,
+        height=900,
         width=1200
     )
 
