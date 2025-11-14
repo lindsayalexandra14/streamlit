@@ -229,7 +229,7 @@ pairplot_columns = ['num_kids', 'marriage_dur','inc_man','inc_woman',
 def make_pairplot(
     df,
     pairplot_columns,
-    fig_title="Pairplot"
+    fig_title="Scatterplots (pairplot)"
 ):
     # Default annotations
     # if annotation1 is None:
