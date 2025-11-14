@@ -90,16 +90,6 @@ custom_palette = [
     '#1bc2bb'
 ]
 
-image_url="https://raw.githubusercontent.com/lindsayalexandra14/ds_portfolio/main/1_projects/data_visualization/streamlit/divorce/bridegroom.png",
-
-st.markdown(
-    f"""
-    <div style="text-align: center;">
-        <img src="{image_url}" width="150">
-    </div>
-    """
-)
-
 st.markdown("""
 <style>
 /* Existing small caption style */
