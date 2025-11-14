@@ -90,6 +90,9 @@ custom_palette = [
     '#1bc2bb'
 ]
 
+st.image("https://github.com/lindsayalexandra14/ds_portfolio/raw/main/portfolio/1_projects/data_visualization/streamlit/divorce/rings.png", 
+         use_column_width=True)
+
 st.markdown("""
 <style>
 /* Existing small caption style */
