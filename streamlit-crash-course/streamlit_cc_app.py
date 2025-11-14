@@ -726,14 +726,13 @@ regression.fit(x_train, y_train)
 predictions = regression.predict(x_test)
 rmse = np.sqrt(mean_squared_error(y_test, predictions))
 
-st.write(f"**RMSE:** {rmse:.2f}")
-
 # --- OLS summary ---
 x_train_const = sm.add_constant(x_train)
 model = sm.OLS(y_train, x_train_const).fit()
 
 st.text(model.summary())
 
+st.write(f"**RMSE:** {rmse:.2f}")
 # --- VIF calculation ---
 vif_data = pd.DataFrame()
 vif_data["feature"] = X_data.columns
