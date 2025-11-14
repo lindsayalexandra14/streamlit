@@ -91,7 +91,7 @@ custom_palette = [
 ]
 
 st.image("https://raw.githubusercontent.com/lindsayalexandra14/ds_portfolio/main/1_projects/data_visualization/streamlit/divorce/bridegroom.png",
-         width="150")
+         width="150px")
 
 st.markdown("""
 <style>
