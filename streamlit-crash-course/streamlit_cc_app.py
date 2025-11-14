@@ -93,14 +93,17 @@ custom_palette = [
 st.markdown("""
 <style>
 /* Existing small caption style */
-.tight_caption p { padding: 8px 12px; 
-            background: rgba(200,200,200,0.35); 
-            border: 1px solid #aaa; 
-            border-radius: 12px; 
-            font-size: 0.9rem; }
+.tight_caption {
+    padding: 8px 12px; 
+    background: rgba(200,200,200,0.35); 
+    border: 1px solid #aaa; 
+    border-radius: 12px; 
+    font-size: 0.9rem;
+    margin-top: 6px;
+}
 
 /* NEW large header-style caption */
-.headers p {
+.headers {
     background: #f2f2f7;
     padding: 12px 18px;
     border-radius: 10px;
@@ -114,6 +117,7 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
+
 
 
 def tight_caption(text):
