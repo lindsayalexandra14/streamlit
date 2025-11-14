@@ -567,13 +567,21 @@ pairplot_caption2 = (
 corrplot_caption = (
             "The heatmap shows the correlations between all the numerical variables:\n"
             "\n"
-            "Strong positive correlations:\n"
-            "• Income (Man) & Income (Woman)\n"
-            "• Number of Kids & Marriage Duration\n"
-            "• Age Difference & Years Woman Older\n\n"
-            "Strong negative correlations:\n"
-            "• Marriage Duration & Marriage Year\n"
-            "• Number of Kids & Marriage Year and Decade\n"
+            "Strong positive correlations:"
+            "\n"
+            "• Income (Man) & Income (Woman)"
+            "\n"
+            "• Number of Kids & Marriage Duration"
+            "\n"
+            "• Age Difference & Years Woman Older"
+            "\n"
+            "\n"
+            "Strong negative correlations:"
+            "\n"
+            "• Marriage Duration & Marriage Year"
+            "\n"
+            "• Number of Kids & Marriage Year and Decade"
+            "\n"
             "• Age Difference & Years Man Older"
         )
 chi_caption = (
@@ -581,6 +589,7 @@ chi_caption = (
             "(Note, number of kids has been used as numerical & categorical given its few unique values)\n"
             "\n"
             "• Highest signficance in relationship between Income (Man) & Income (Woman)\n"
+            "\n"
             "• All other relationships significant except for Education (Man) & Number of Kids"
         )
 # Remaining figures
