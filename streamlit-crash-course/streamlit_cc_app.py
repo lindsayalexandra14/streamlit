@@ -186,7 +186,7 @@ def make_pairplot(
     if annotation1 is None:
         annotation1 = (
             "There is a strong negative correlation between marriage year & marriage duration, "
-            "<br>showing that the more recent the year the couples were married, the shorter the "
+            "<br>showing that the more recently the couples were married, the shorter the "
             "marriage duration."
         )
     if annotation2 is None:
