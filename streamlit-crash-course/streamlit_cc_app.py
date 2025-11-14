@@ -651,12 +651,9 @@ corrplot_caption = (
 st.markdown(corrplot_caption, unsafe_allow_html=True)
 
 chi_caption = (
-            "Chi-Squared test pairs the categorical variables to see if a significant relationship exists:\n"
-            "(Note, number of kids has been used as numerical & categorical given its few unique values)\n"
-            "\n"
-            "\n"
-            "• Highest signficance in relationship between Income (Man) & Income (Woman)\n"
-            "\n"
+            "Chi-Squared test pairs the categorical variables to see if a significant relationship exists:<br>"
+            "(Note, number of kids has been used as numerical & categorical given its few unique values)<br>"
+            "• Highest signficance in relationship between Income (Man) & Income (Woman)<br>"
             "• All other relationships significant except for Education (Man) & Number of Kids"
         )
 # Remaining figures
