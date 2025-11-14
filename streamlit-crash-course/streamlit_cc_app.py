@@ -16,35 +16,28 @@ import streamlit as st
 
 st.markdown(
     """
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
-    <div style="text-align:center;">
-        <h1 style="
-            color:#333;
-            margin-bottom:0px;
-            font-size:48px;
-            font-family:'Dancing Script', cursive;
-        ">
-            Divorced Couples EDA
-        </h1>
+    <h1 style="
+        text-align:center;
+        font-family:'Dancing Script', cursive;
+        font-size:48px;
+        color:#333;
+        margin-bottom:2px;
+    ">
+        Divorced Couples EDA
+    </h1>
 
-        <div style="
-            width:120px;
-            height:2px;
-            background-color:#aaa;
-            margin:6px auto 4px auto;
-            border-radius:2px;
-        "></div>
-
-        <p style="
-            color:#666;
-            font-size:18px;
-            margin-top:0px;
-            font-family:sans-serif;
-        ">
-            Insights into relationships, income patterns, and time trends
-        </p>
-    </div>
+    <h4 style="
+        text-align:center;
+        font-family:'Inter', sans-serif;
+        font-size:18px;
+        color:#666;
+        margin-top:0px;
+        font-weight:300;
+    ">
+        Understanding demographic patterns and statistical relationships
+    </h4>
     """,
     unsafe_allow_html=True
 )
