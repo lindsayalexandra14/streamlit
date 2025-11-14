@@ -14,7 +14,13 @@ from statsmodels.stats.outliers_influence import variance_inflation_factor
 from statsmodels.tools.tools import add_constant
 import streamlit as st
 
-st.title('Python EDA: Divorce Data')
+st.set_page_config(
+    page_title="Divorce Data EDA",
+    layout="wide",  # full-width layout
+    initial_sidebar_state="expanded"
+)
+
+st.title("Python EDA: Divorce Data")
 
 df = pd.read_csv("divorce.csv")
 
@@ -192,15 +198,14 @@ def make_pairplot(
             "of the woman (e.g., if the income of the man is high or <br>low, so is that of the woman)"
         )
 
-    # Create scatter matrix
-    # fig = px.scatter_matrix(
-    #     df,
-    #     dimensions=pairplot_columns,
-    #     title=fig_title,
-    #     height=1600,
-    #     width=3000
-    # )
-    fig = sns.pairplot(df[pairplot_columns], height=3)  # height per subplot
+    #Create scatter matrix
+    fig = px.scatter_matrix(
+        df,
+        dimensions=pairplot_columns,
+        title=fig_title,
+        height=1600,
+        width=3000
+    )
 
     # Update traces
     fig.update_traces(
@@ -464,8 +469,7 @@ for tab, fig in zip([tab7, tab8, tab9, tab10, tab11], [fig7, fig8, fig9, fig10, 
         st.plotly_chart(fig, use_container_width=True)
 
 # Remaining figures
-st.pyplot(fig12)
-#st.plotly_chart(fig12, use_container_width=True)  # pairplot
+st.plotly_chart(fig12, use_container_width=True)  # pairplot
 st.pyplot(fig13)  # correlation heatmap
 st.pyplot(fig14)  # chi2 plot
 
