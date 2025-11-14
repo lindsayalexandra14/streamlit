@@ -20,6 +20,9 @@ df = pd.read_csv("divorce.csv")
 
 df["num_kids"]=df["num_kids"].fillna(0)
 df["marriage_dur"]=df["marriage_duration"]
+df["inc_man"]=df["income_man"]
+df["inc_woman"]=df["income_woman"]
+
 
 df = df.dropna(subset=["education_man"])
 
@@ -36,7 +39,7 @@ df["years_man_older"] = np.trunc(df["days_man_older"].dt.days / 365).astype(int)
 df["years_woman_older"] = np.trunc(df["days_woman_older"].dt.days / 365).astype(int)
 
 df["age_diff"] = df["age_diff"].dt.days // 365
-df["income_diff"]=df["income_man"]-df["income_woman"]
+df["income_diff"]=df["inc_man"]-df["inc_woman"]
 df["marriage_yr"]=df["marriage_date"].dt.year
 df["divorce_year"]=df["divorce_date"].dt.year
 df["marriage_decade"]=df["marriage_date"].dt.year // 10 * 10
@@ -168,7 +171,7 @@ def plot_histogram(df, x, nbins, xaxis_title, text):
     return fig
 
 
-pairplot_columns = ['num_kids', 'marriage_dur','income_man','income_woman',
+pairplot_columns = ['num_kids', 'marriage_dur','inc_man','inc_woman',
                    'age_diff',
                    'income_diff','marriage_yr']
 
@@ -438,8 +441,8 @@ fig5 = plot_bars(df,"marriage_yr", custom_palette, title='Marriage Year', sort_b
 fig6 = plot_bars(df,"divorce_year", custom_palette, sort_by="category", title='Divorce Year', caption='The highest number of divorces among the couples occurred in <br>2011 (9.8%), with an overall peak between 2008-2011.')
 
 fig7 = plot_histogram(df,"marriage_dur",20,"Marriage Duration",text="The median marriage duration is 8 years. The heaviest<br>concentration is between 2-5 years and the max is 33 years.")
-fig8 = plot_histogram(df,"income_man",15,"Income (Man)",text="The median monthly income for the men was 5,000 dollars <br>with an IQR of 3,200-8,200 dollars and a max of ~19k.")
-fig9 = plot_histogram(df,"income_woman",15,"Income (Woman)",text="The median monthly income for the women was also 5,000 dollars <br>with a bit lower Q3 (7,500 dollars) and max (~15k).")
+fig8 = plot_histogram(df,"inc_man",15,"Income (Man)",text="The median monthly income for the men was 5,000 dollars <br>with an IQR of 3,200-8,200 dollars and a max of ~19k.")
+fig9 = plot_histogram(df,"inc_woman",15,"Income (Woman)",text="The median monthly income for the women was also 5,000 dollars <br>with a bit lower Q3 (7,500 dollars) and max (~15k).")
 fig10 = plot_histogram(df,"age_diff",10,"Age Difference",text="The median age difference of the couple was 2 years, with<br>most ranging from 1-4 years")
 fig11 = plot_histogram(df,"years_woman_older",20,"Years Woman Older",text="The median number of years older of the woman was 1,<br> showing that in most divorced couples the woman was older.")
 
