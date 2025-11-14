@@ -217,9 +217,9 @@ def make_pairplot(
     fig.add_annotation(
         text=annotation1,
         xref="paper", yref="paper",
-        x=0, y=-0.07,
+        x=0, y=-0.11,
         showarrow=False,
-        font=dict(size=14, color="black"),
+        font=dict(size=17, color="black"),
         xanchor='left', yanchor='top',
         align="left",
         bgcolor="rgba(211, 211, 211, 0.5)",
@@ -231,9 +231,9 @@ def make_pairplot(
     fig.add_annotation(
         text=annotation2,
         xref="paper", yref="paper",
-        x=0, y=-0.13,
+        x=0, y=-0.17,
         showarrow=False,
-        font=dict(size=14, color="black"),
+        font=dict(size=17, color="black"),
         xanchor='left', yanchor='top',
         align="left",
         bgcolor="rgba(211, 211, 211, 0.5)",
