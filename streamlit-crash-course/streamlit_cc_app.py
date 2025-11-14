@@ -90,11 +90,12 @@ custom_palette = [
     '#1bc2bb'
 ]
 
-# Create three columns
-col1, col2, col3 = st.columns([1, 2, 1])
+# Create five columns
+col1, col2, col3, col4, col5 = st.columns([1, 2, 4, 2, 1])
+
 
 # Place the image in the middle column
-with col2:
+with col3:
     st.image(
         "https://raw.githubusercontent.com/lindsayalexandra14/ds_portfolio/main/1_projects/data_visualization/streamlit/divorce/bridegroom.png",
         width=150
