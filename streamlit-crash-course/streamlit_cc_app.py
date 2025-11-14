@@ -332,11 +332,11 @@ def make_correlation_heatmap(
     fig.patch.set_alpha(0)
 
     plt.figtext(
-    0.1,      # centered horizontally
+    0.5,      # centered horizontally
     0.97,     # slightly above the plot
     "Correlation Heatmap",
-    ha="left",
-    va="left",
+    ha="center",
+    va="center",
     fontsize=12,          # small but bold like Plotly
     fontweight="bold",
 )
