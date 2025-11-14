@@ -420,7 +420,7 @@ def make_chi2_plot(
 
         # Caption
     plt.figtext(
-        0.5, -0.25,          # x = 0.5 centers horizontally
+        0.7, -0.25,          # x = 0.5 centers horizontally
         caption_text,
         fontsize=10,
         color='black',
