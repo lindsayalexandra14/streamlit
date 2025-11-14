@@ -139,7 +139,7 @@ def plot_bars(df, col, custom_palette, sort_by='percentage', title="Title TBD", 
         height=500,
         font=dict(family="Monospace", size=12, color="black"),
         showlegend=False,
-        margin=dict(b=130)
+        margin=dict((t=40, b=10, l=10, r=10))
 )
 
     # Hover and text formatting
