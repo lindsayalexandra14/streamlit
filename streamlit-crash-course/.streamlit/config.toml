@@ -1,5 +1,5 @@
 [theme]
 primaryColor = "#1E90FF"
-backgroundColor = "#353434ff"
+backgroundColor = "#d0d0d0ff"
 secondaryBackgroundColor = "#787878ff"
-textColor = "#ffffffff"
+textColor = "#000000ff"
