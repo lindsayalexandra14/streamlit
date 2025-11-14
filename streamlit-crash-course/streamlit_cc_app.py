@@ -21,7 +21,7 @@ st.markdown(
     <h1 style="
         text-align:center;
         font-family:'Dancing Script', cursive;
-        font-size:48px;
+        font-size:54px;
         color:#333;
         margin-bottom:0px;
     ">
