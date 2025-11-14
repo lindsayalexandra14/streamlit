@@ -192,7 +192,7 @@ def make_pairplot(
     if annotation2 is None:
         annotation2 = (
             "There is a strong positive correlation between the income of the man and the income "
-            "<br>of the woman (e.g., if the income of the man is high or low, so is that of the woman)"
+            "<br>of the woman; if the income of the man is high or low, so is that of the woman"
         )
 
     # Create scatter matrix
