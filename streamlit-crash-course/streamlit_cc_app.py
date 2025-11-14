@@ -27,15 +27,15 @@ df['divorce_date'] = pd.to_datetime(df['divorce_date'])
 df['dob_man'] = pd.to_datetime(df['dob_man'])
 df['dob_woman'] = pd.to_datetime(df['dob_woman'])
 
-df["age_difference"]=abs(df["dob_man"]-df["dob_woman"])
+df["age_diff"]=abs(df["dob_man"]-df["dob_woman"])
 
 df["days_man_older"]=df["dob_man"]-df["dob_woman"]
 df["days_woman_older"]=df["dob_woman"]-df["dob_man"]
 df["years_man_older"] = np.trunc(df["days_man_older"].dt.days / 365).astype(int)
 df["years_woman_older"] = np.trunc(df["days_woman_older"].dt.days / 365).astype(int)
 
-df["age_difference"] = df["age_difference"].dt.days // 365
-df["income_difference"]=df["income_man"]-df["income_woman"]
+df["age_diff"] = df["age_diff"].dt.days // 365
+df["income_diff"]=df["income_man"]-df["income_woman"]
 df["marriage_year"]=df["marriage_date"].dt.year
 df["divorce_year"]=df["divorce_date"].dt.year
 df["marriage_decade"]=df["marriage_date"].dt.year // 10 * 10
@@ -168,8 +168,8 @@ def plot_histogram(df, x, nbins, xaxis_title, text):
 
 
 pairplot_columns = ['num_kids', 'marriage_duration','income_man','income_woman',
-                   'age_difference',
-                   'income_difference','marriage_year']
+                   'age_diff',
+                   'income_diff','marriage_year']
 
 def make_pairplot(
     df,
