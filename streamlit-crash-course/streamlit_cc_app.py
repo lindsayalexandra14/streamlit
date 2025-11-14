@@ -291,7 +291,9 @@ def make_correlation_heatmap(
         center=0,
         linewidths=0.5,
         linecolor='gray',
-        cbar_kws={'label': 'Correlation'}
+        cbar_kws={'label': 'Correlation'}.
+        annot_kws={"size": 7}   # <<< reduce correlation number font size here
+
     )
 
     # Formatting
