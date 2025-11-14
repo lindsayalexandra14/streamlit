@@ -171,6 +171,15 @@ pairplot_columns = ['num_kids', 'marriage_duration','income_man','income_woman',
                    'age_difference',
                    'income_difference','marriage_year']
 
+short_names = {
+    'num_kids': 'Kids',
+    'marriage_duration': 'Duration',
+    'income_man': 'Income M',
+    'income_woman': 'Income W',
+    'age_difference': 'Age Diff',
+    'income_difference': 'Income Diff',
+    'marriage_year': 'Year'
+}
 
 def make_pairplot(
     df,
@@ -191,10 +200,13 @@ def make_pairplot(
             "There is a strong positive correlation between the income of the man and the income "
             "of the woman (e.g., if the income of the man is high or <br>low, so is that of the woman)"
         )
+    
+    df_temp = df[pairplot_columns].rename(columns=short_names)
+
 
     #Create scatter matrix
     fig = px.scatter_matrix(
-        df,
+        df_temp,
         dimensions=pairplot_columns,
         title=fig_title,
         height=1200,
@@ -209,10 +221,6 @@ def make_pairplot(
 
     # Layout & margin
     fig.update_layout(margin=dict(b=250))
-
-        # Rotate all x-axis labels
-    fig.update_xaxes(tickangle=45)
-    fig.update_yaxes(tickangle=0)
 
     # Add annotations
     fig.add_annotation(
