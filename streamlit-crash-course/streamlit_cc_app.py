@@ -182,7 +182,7 @@ short_names = {
 }
 
 def make_pairplot(
-    df,
+    df_temp,
     pairplot_columns,
     fig_title="Pairplot",
     annotation1=None,
@@ -206,7 +206,7 @@ def make_pairplot(
 
     #Create scatter matrix
     fig = px.scatter_matrix(
-        df=df_temp,
+        df_temp,
         dimensions=pairplot_columns,
         title=fig_title,
         height=1200,
