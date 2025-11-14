@@ -479,6 +479,25 @@ st.plotly_chart(fig12, use_container_width=True)  # pairplot
 st.pyplot(fig13)  # correlation heatmap
 st.pyplot(fig14)  # chi2 plot
 
+st.markdown(
+    """
+    <div style="
+        background-color: rgba(211, 211, 211, 0.5);
+        padding: 12px 18px;
+        border-radius: 12px;
+        border: 1px solid gray;
+        font-size: 14px;
+        line-height: 1.4;
+        margin-top: 10px;
+    ">
+        <strong>Correlation Insight:</strong><br>
+        Marriage year has a strong negative correlation with marriage duration.
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+
 
 # dummy variables for marriage decade (since it is now categorical)
 df_encoded = pd.get_dummies(df, columns=['marriage_decade'], drop_first=True)
