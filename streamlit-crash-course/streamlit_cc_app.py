@@ -16,7 +16,6 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Divorce Data EDA",
-    layout="wide",  # full-width layout
     initial_sidebar_state="expanded"
 )
 
