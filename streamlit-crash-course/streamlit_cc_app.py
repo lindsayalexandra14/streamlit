@@ -90,17 +90,15 @@ custom_palette = [
     '#1bc2bb'
 ]
 
-# Create five columns
-col1, col2, col3, col4, col5 = st.columns([1, 2, 4, 2, 1])
+image_url="https://raw.githubusercontent.com/lindsayalexandra14/ds_portfolio/main/1_projects/data_visualization/streamlit/divorce/bridegroom.png",
 
-
-# Place the image in the middle column
-with col4:
-    st.image(
-        "https://raw.githubusercontent.com/lindsayalexandra14/ds_portfolio/main/1_projects/data_visualization/streamlit/divorce/bridegroom.png",
-        width=150
-    )
-
+st.markdown(
+    f"""
+    <div style="text-align: center;">
+        <img src="{image_url}" width="150">
+    </div>
+    """
+)
 
 st.markdown("""
 <style>
